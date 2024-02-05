@@ -291,6 +291,10 @@ margin-top: 2px;
     align-items: center;
 }
 
+#yotpo-reviews-main-widget.yotpo-device-mobile .yotpo-filters-container-inner .yotpo-filters-right-panel {
+    width: 100%;
+}
+
 .yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] .yotpo-dropdown-closable .yotpo-dropdown-base .yotpo-dropdown-placeholder-input {
     border: none;
 }
