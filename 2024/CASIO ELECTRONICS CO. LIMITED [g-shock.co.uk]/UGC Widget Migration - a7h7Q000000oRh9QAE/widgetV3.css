@@ -461,6 +461,10 @@
     margin-top: 50px;
 }
 
+[class*="yotpo-device-"][class*="yotpo-display-"] .yotpo-review-border-smooth {
+	height: 1px !important;
+}
+
 [class*="yotpo-device-"][class*="yotpo-display-"] .yotpo-questions-list .yotpo-question {
     margin: 50px 0;
 }
@@ -486,6 +490,10 @@
     color: #fff;
     padding: 10px 20px;
     text-transform: uppercase;
+}
+
+#yotpo-questions-and-answers .yotpo-ask-question-btn-wrapper #yotpo-widget-btn:hover {
+    text-decoration: none;
 }
 
 #yotpo-questions-and-answers:not(.yotpo-device-mobile) #yotpo-questions-container .yotpo-question .yotpo-question-center-panel {
