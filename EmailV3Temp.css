@@ -12,11 +12,15 @@ label {
     font-family: 'Arial', sans-serif !important;
 }
 
-#review_content, #review-title-input {
+#review_content,
+#review-title-input,
+textarea.textarea {
     border-color: #000 !important;
     width: 100% !important;
+    box-sizing: border-box;
 }
 
-.stars-rating-container.es-table {
+.stars-rating-container.es-table,
+.custom-questions-container .full-width.es-table {
     width: 100% !important;
 }
