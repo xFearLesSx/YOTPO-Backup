@@ -38,13 +38,17 @@
     font-family: Gotham, sans-serif !important;
 }
 
-.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal * {
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal *,
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal input::placeholder, 
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal textarea::placeholder {
     font-family: "Courier New", Courier, monospace !important;
     text-transform: uppercase;
 }
 
 .yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal textarea, 
-.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal input {
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal input,
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal input::placeholder, 
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal textarea::placeholder {
     text-transform: none;
 }
 
