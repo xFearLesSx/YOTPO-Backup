@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'Gerbera-Light';
+    src: url('https://cdn.shopify.com/s/files/1/1201/0180/files/Gerbera-Light_b757557c-6e06-4eee-b442-b68becdeb641.woff2?v=1697831307') format('woff2'),      
+         url('https://cdn.shopify.com/s/files/1/1201/0180/files/Gerbera-Light_9c69e62b-cd2d-48b5-8e18-7a510cc62f96.woff?v=1697831307') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.yotpo-reviews-carousel-widget-container * {
+    font-family: 'Gerbera-Light', sans-serif !important;
+}
+
+.yotpo-reviews-carousel-widget-container .yotpo-reviews-carousel-bottomline-container {
+    justify-content: center;
+}
+
+.reviews-carousel-card-review-content-container .review-content span {
+    font-weight: 700 !important;
+}
+
+#yotpo-reviews-carousel-widget .reviews-carousel-card-container {
+    border-color: #d8c994;
+    background: #F2E7DE;
+}
+
+.reviews-carousel-card-review-product-container .review-product-name,
+.reviews-carousel-card-reviewer-info-container .reviewer-status-text,
+.reviews-carousel-card-reviewer-info-container .review-date {
+    color: #4f4f4f;
+}
+
+#yotpo-reviews-carousel-widget .yotpo-reviews-carousel-header {
+    text-align: center;
+    /* font-size: calc(23px * 1.25); */
+    font-size: calc(var(--font-5) * var(--FONT-ADJUST-HEADING));
+}
+
+.reviews-carousel-card-reviewer-info-container {
+	align-items: start;
+}
+
+.reviewer-info.reviewer-info-mobile-mode {
+    flex-direction: column;
+    align-items: start;
+}
+
+.yotpo-reviews-carousel-widget-container.yotpo-reviews-carousel-widget-mobile-mode .yotpo-reviews-carousel-reviews-by-yotpo-seo {
+	width: 100% !important;
+}
+
+@media only screen and (max-width: 370px) {
+  .yotpo-reviews-carousel-widget-container .reviews-carousel-card-container.reviews-carousel-card-mobile-mode {
+      width: 280px;
+  } 
+}
