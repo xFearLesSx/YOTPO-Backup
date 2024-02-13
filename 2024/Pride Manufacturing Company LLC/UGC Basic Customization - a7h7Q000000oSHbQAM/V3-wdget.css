@@ -1,0 +1,19 @@
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal,
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] .modal-backdrop.yotpo-media-modal,
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] .yotpo-main-layout #yotpo-mobile-filters-popup,
+.yotpo-qna-modal-backdrop {
+	z-index: 99999999 !important;
+}
+
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal .form-footer .yotpo-checkbox-container *:where(:not(html, iframe, canvas, img, svg, video, span):not(svg *, symbol *)) {
+    all: revert;
+    margin: 0 3px;
+}
+
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal .yotpo-checkbox-container {
+    padding: 0;
+}
+
+.yotpo-reviews-main-widget[class*="yotpo-device-"][class*="yotpo-display-"] #newReviewFormModal .yotpo-checkbox-container #checkboxInput {
+    margin-left: 0;
+}

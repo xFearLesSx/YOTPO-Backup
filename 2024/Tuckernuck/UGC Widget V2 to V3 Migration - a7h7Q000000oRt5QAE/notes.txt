@@ -1,0 +1,18 @@
+1) Updated
+2) Updated
+3) Updated
+4) Updated
+5) Unfortunately this is Out of our Scope, we can't change the functionality of the System.
+6) Not Doable On V3's structure
+7) Media Checkbox is now Removed but moving the Rating together with the filter section is Not Doable On V3's structure.
+8) Unfortunately this is Out of our Scope, we can't add any kind of functionality in the system.
+9) Updated
+10) Updated
+11) Updated
+12) Updated
+13) Updated
+14) Updated
+15) Removed
+16) Unfortunately this is Out of our Scope, we can't change the functionality of the System.
+17) See attached
+18) Updated
