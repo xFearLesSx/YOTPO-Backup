@@ -133,11 +133,7 @@
     position: relative;
 }
 
-#yotpo-testimonials-custom-tab.yotpo-medium .yotpo-reviews[data-host-widget="testimonials"] .yotpo-review.yotpo-regular-box {
-    width: 48%;
-}
-
-#yotpo-testimonials-custom-tab.yotpo-small .yotpo-reviews[data-host-widget="testimonials"] .yotpo-review.yotpo-regular-box {
+#yotpo-testimonials-custom-tab[class*="yotpo"] .yotpo-reviews[data-host-widget="testimonials"] .yotpo-review.yotpo-regular-box {
     width: 100%;
     padding: 40px 40px 80px;
 }
@@ -189,9 +185,11 @@
     bottom: 70px;
     left: 0;
     right: 0;
+    width: max-content;
+    margin: 0 auto;
 }
 
-#yotpo-testimonials-custom-tab.yotpo-small #yotpo-testimonials .yotpo-reviews[data-host-widget="testimonials"] .yotpo-review.yotpo-regular-box .yotpo-main a.product-link-wrapper {
+#yotpo-testimonials-custom-tab[class*="yotpo"] #yotpo-testimonials .yotpo-reviews[data-host-widget="testimonials"] .yotpo-review.yotpo-regular-box .yotpo-main a.product-link-wrapper {
     bottom: 40px;
 }
 
@@ -200,6 +198,19 @@
     text-align: center;
     font-size: 11px;
     padding: 0;
+    display: inline-block;
+    width: auto;
+    margin-left: -20px;
+    text-transform: uppercase;
+}
+
+#yotpo-testimonials .yotpo-reviews[data-host-widget="testimonials"] .yotpo-review.yotpo-regular-box .yotpo-main a.product-link-wrapper .product-link::before {
+    content: '';
+    background: #fff;
+    height: 17px;
+    display: block;
+    width: 20px;
+    position: absolute;
 }
 
 #yotpo-testimonials .yotpo-reviews[data-host-widget="testimonials"] .yotpo-review.yotpo-regular-box .yotpo-main .content-review {
@@ -222,9 +233,23 @@
 }
 
 /* reviews */
-
 #yotpo-testimonials .yotpo-reviews[data-host-widget="testimonials"] nav[role="navigation"] .yotpo-page-element {
     font-family: 'UntitledSans', sans-serif !important;
+}
+
+@media screen and (min-width: 1024px) {
+    main#main #yotpo-testimonials-custom-tab {
+        min-height: 1600px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #yotpo-testimonials-custom-tab .yotpo-reviews[data-host-widget="testimonials"] .yotpo-review.yotpo-regular-box {
+        width: 48%;
+    }
+    main#main #yotpo-testimonials-custom-tab {
+        min-height: 2200px;
+    }
 }
 
 @media screen and (max-width: 750px) {
@@ -238,14 +263,8 @@
     }
 }
 
-@media screen and (min-width: 600px) {
-    #yotpo-testimonials-custom-tab {
-        min-height: 1350px !important;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    #yotpo-testimonials-custom-tab {
-        min-height: 3330px !important;
+@media screen and (max-width: 655px) {
+    main#main #yotpo-testimonials-custom-tab {
+        min-height: 3330px;
     }
 }
