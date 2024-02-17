@@ -6,14 +6,14 @@
 }
 
 :root {
-    --YotpoPrimaryColor: #000;
-    --YotpoSecondaryColor: #888;
+    --YotpoPrimaryColor: #BE3A24;
+    --YotpoSecondaryColor: #BE3A24;
     --YotpoPrimaryFont:'Lato', var(--YotpoFallbackFont);
     --YotpoSecondaryFont:'Helvetica', var(--YotpoFallbackFont);
     --YotpoFallbackFont: sans-serif;
     --YotpoLogoIconColor : var(--YotpoSecondaryColor);
     --YotpoAvatarBackgroundColor: var(--YotpoSecondaryColor);
-    --YotpoVerifiedIconBackgroundColor: #2f84ed;
+    --YotpoVerifiedIconBackgroundColor: var(--YotpoPrimaryColor);
     --YotpoPaginationBackground: var(--YotpoSecondaryColor);
     --YotpoCustomAvatarBackground: url(https://cdn-yotpo-images-production.yotpo.com/App/531793/179197833/thumb.png?1623250721);
 }
@@ -112,19 +112,20 @@
 [class*="yotpo-display-"][class*="yotpo-device-"] .yotpo-question-form .form-footer .yotpo-question-submit,
 [class*="yotpo-display-"][class*="yotpo-device-"] .yotpo-vertical-pagination .yotpo-reviews-pagination-item,
 [class*="yotpo-display-"][class*="yotpo-device-"].yotpo-device-mobile .yotpo-vertical-pagination .yotpo-pagination-item {
-    background: #fff;
-    color: var(--YotpoPrimaryColor);
-    border: 1px solid var(--YotpoPrimaryColor);
+    background: var(--YotpoPrimaryColor);
+    color: #fff;
+    border: none;
     border-radius: 0;
     width: auto;
     height: auto;
     line-height: 1;
     font-weight: 700;
     padding: 12px 20px;
+    text-transform: uppercase;
 }
 
 #yotpo-questions-and-answers[class*="yotpo-display-"][class*="yotpo-device-"] [class*="-btn-wrapper"] [id*="-widget-btn"] span {
-    color: var(--YotpoPrimaryColor);
+    color: #fff;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-layout-header-wrapper .yotpo-bottom-line .yotpo-bottom-line-summary {
@@ -232,6 +233,7 @@
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-filters-container .yotpo-filters-top-panel::before {
     content: "Filter Reviews";
     font-weight: 700;
+    color: var(--YotpoPrimaryColor);
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-filters-container .yotpo-filters-top-panel > [class$="filter-container"] {
