@@ -1,0 +1,76 @@
+<div class="thank-you-container" ng-show="!pageLoading" data-cy="thank-you-container">
+    <div class="message">
+        <div ng-if="!coupon">
+            <h1 class="message_parent">
+        <span class="ty_hdr_message">Thank you. Your review has been submitted</span> 
+        <span class="ty_content_message">While you’re here, why not tell us about other products and what you 
+            thought of our service?</span> 
+        <!--span class="product-name" ng-bind-html="productName"></span-->
+      </h1>
+            <!--h1>
+Thank for submitting your review for.
+<span class="thank-you-prod">Thank you for providing the imagery for:</span> 
+<span class="product-name" ng-bind-html="productName"></span> 
+</h1-->
+            <div ng-show="showProductImage" class="product-img-container" data-cy="product-image-container">
+                <div ng-if="productImageUrl">
+                    <img ng-src="{{productImageUrl}}" class="product-img" alt="Product image" />
+                    <div class="product_name_section">
+                        <span class="product-name" ng-bind-html="productName"></span>
+                        <p>Thank you for reviewing</p>
+                    </div>
+                </div>                
+                <div ng-if="!productImageUrl">
+                    <img src="https://cdn.shopify.com/s/files/1/0708/4605/4708/files/twc_noimage.jpg?v=1706003684" class="product-img ng-scope" alt="Product image">
+                    <div class="product_name_section">
+                        <span class="product-name" ng-bind-html="productName"></span>
+                        <p>Thank you for reviewing</p>
+                    </div>
+                </div>              	
+                <!--svg ng-if="!productImageUrl" class="product-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75" height="75">
+                    <g fill="none" fill-rule="evenodd">
+                        <path d="M.5.5h74v74H.5z"></path>
+                        <g transform="rotate(38 -7.454 68.216)">
+                            <path fill="#D3D6DD" d="M10.478 9.86c-1.268 0-2.295-.983-2.295-2.197 0-1.213 1.027-2.197 2.295-2.197s2.295.984 2.295 2.197c0 1.214-1.027 2.198-2.295 2.198m9.28-3.456L10.483.101 1.199 6.405C.445 6.833 0 7.694 0 8.702V27.6c0 1.582 1.346 2.87 2.999 2.87h14.97c1.643 0 2.988-1.288 2.988-2.87V8.702c0-1.008-.445-1.869-1.198-2.297"
+                            />
+                        </g>
+                        <path fill="#D3D6DD" d="M43.302 31.028l1.31 1.024 7.608-9.738-1.31-1.024z" />
+                    </g>
+                </svg-->
+            </div>
+        
+      </div>
+        <div ng-if="coupon.action === 'map_review'">
+            <h1><span ng-bind="'REVIEW.THANK_YOU_SECTION.COUPON.MAIL' | translate"></span></h1>
+        </div>
+        <div ng-if="coupon.action === 'map_share' || coupon.action === 'map_review_share'" class="share-coupon">
+            <h1><div ng-bind="'REVIEW.THANK_YOU_SECTION.COUPON.SHARE' | translate"></div></h1>
+            <div ng-bind="coupon.discount" class="coupon-discount"></div>
+        </div>
+    </div>
+
+    <div class="shares" ng-if="showShares">
+        <a class="facebook" aria-label="Share on Facebook" ng-click="facebookShareClicked()" role="button">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37" height="37" viewBox="0 0 37 37">
+                <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+                    <circle fill="#FFFFFF" cx="17.5" cy="17.5" r="17.5" stroke="#ACB5D4" stroke-opacity=".37"></circle>
+                    <g transform="translate(13.243 9.46)">
+                        <path fill="#ACB5D4" d="M5.509 16.214V8.818h2.476l.417-2.92H5.51v-1.99c0-.618.51-1.123 1.133-1.123h1.871V.097L6.162.003C3.966-.084 2.476 1.556 2.476 3.487v2.411H0v2.92h2.476v7.396" />
+                    </g>
+                </g>
+            </svg>
+        </a>
+        <a class="twitter" aria-label="Share on Twitter" ng-click="twitterShareClicked()" ng-href="https://twitter.com/intent/tweet?url={{ twitterShareLink }}&amp;text=I just wrote a review on {{ productName }}&amp;via=yotpo" target="_blank" data-network="twitter"
+        role="button">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37" height="37" viewBox="0 0 37 37">
+                <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+                    <circle fill="#FFFFFF" cx="17.5" cy="17.5" r="17.5" stroke="#ACB5D4" stroke-opacity=".371"></circle>
+                    <g transform="translate(8.514 10.405)">
+                        <path fill="#ACB5D4" d="M17.973 1.753a7.294 7.294 0 0 1-2.118.588A3.74 3.74 0 0 0 17.476.273a7.324 7.324 0 0 1-2.341.907A3.66 3.66 0 0 0 12.443 0c-2.036 0-3.687 1.673-3.687 3.737 0 .293.033.579.096.852-3.065-.156-5.782-1.644-7.6-3.905a3.758 3.758 0 0 0-.5 1.879 3.75 3.75 0 0 0 1.64 3.111 3.635 3.635 0 0 1-1.67-.468v.048c0 1.81 1.27 3.32 2.958 3.664a3.648 3.648 0 0 1-1.665.064c.469 1.485 1.83 2.566 3.444 2.596A7.335 7.335 0 0 1 0 13.126a10.335 10.335 0 0 0 5.652 1.679c6.783 0 10.492-5.695 10.492-10.634 0-.162-.004-.323-.011-.484a7.548 7.548 0 0 0 1.84-1.934"
+                        />
+                    </g>
+                </g>
+            </svg>
+        </a>
+    </div>
+</div>
