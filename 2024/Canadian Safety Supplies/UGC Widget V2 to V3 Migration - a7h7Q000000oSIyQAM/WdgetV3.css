@@ -8,10 +8,8 @@
 :root {
     --YotpoPrimaryColor: #000;
     --YotpoSecondaryColor: #ca1721;
-    --YotpoPrimaryFont:
-    'AvenirNext', var(--YotpoFallbackFont);
-    --YotpoSecondaryFont:
-    'Helvetica', var(--YotpoFallbackFont);
+    --YotpoPrimaryFont:'AvenirNext', var(--YotpoFallbackFont);
+    --YotpoSecondaryFont:'Helvetica', var(--YotpoFallbackFont);
     --YotpoFallbackFont: sans-serif;
     --YotpoLogoIconColor : var(
     --YotpoSecondaryColor);
