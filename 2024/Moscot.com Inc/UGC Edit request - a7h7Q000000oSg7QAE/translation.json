@@ -1,0 +1,10 @@
+{
+  "labels": {
+    "ReviewsMainWidget": {
+      "en": {
+        "send-button-text": "Submit",
+        "empty-state-button-text": "Write a Review"
+      }
+    }
+  }
+}

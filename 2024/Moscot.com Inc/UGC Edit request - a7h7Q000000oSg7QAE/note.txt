@@ -1,0 +1,8 @@
+#1 - DONE => activated to show star rating when empty
+#2 - already linked
+#3 - reviews are there when I checked
+#4 - Removed other content on empty state but can't remove the border
+#5 - can't replicate the issue
+#6 - can't replicate the issue
+#7 - already centered
+#8 - DONE => removed arrow
