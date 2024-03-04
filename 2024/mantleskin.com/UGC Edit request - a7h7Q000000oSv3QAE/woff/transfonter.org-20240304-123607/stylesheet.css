@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Lexend Tera';
+    src: url('LexendTera-Bold.woff2') format('woff2'),
+        url('LexendTera-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lexend Tera';
+    src: url('LexendTera-Light.woff2') format('woff2'),
+        url('LexendTera-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lexend Tera';
+    src: url('LexendTera-ExtraLight.woff2') format('woff2'),
+        url('LexendTera-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lexend Tera';
+    src: url('LexendTera-Black.woff2') format('woff2'),
+        url('LexendTera-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lexend Tera';
+    src: url('LexendTera-Medium.woff2') format('woff2'),
+        url('LexendTera-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lexend Tera';
+    src: url('LexendTera-ExtraBold.woff2') format('woff2'),
+        url('LexendTera-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lexend Tera';
+    src: url('LexendTera-Regular.woff2') format('woff2'),
+        url('LexendTera-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lexend Tera';
+    src: url('LexendTera-SemiBold.woff2') format('woff2'),
+        url('LexendTera-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lexend Tera';
+    src: url('LexendTera-Thin.woff2') format('woff2'),
+        url('LexendTera-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
