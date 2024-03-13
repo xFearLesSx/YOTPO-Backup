@@ -274,6 +274,13 @@
     color: var(--YotpoPrimaryColor);
 }
 
+[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-custom-questions-filters .yotpo-dropdown-placeholder {
+    position: relative;
+    top: 0;
+    background: none !important;
+    z-index: 1;
+}
+
 /* mobile filter modal */
 [class*="yotpo-display-"][class*="yotpo-device-"].yotpo-device-mobile #yotpo-mobile-filters-popup {}
 
