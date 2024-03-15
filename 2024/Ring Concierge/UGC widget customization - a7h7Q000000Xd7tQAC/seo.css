@@ -143,7 +143,7 @@
 }
 
 #yotpo-reviews-seo-page[class*="yotpo-display-"].yotpo-display-mobile .yotpo-reviews-seo-list .yotpo-review:has(.yotpo-shop-badge) {
-    gap: 20px;
+    /* gap: 20px; */
 }
 
 #yotpo-reviews-seo-page[class*="yotpo-display-"].yotpo-display-laptop .yotpo-reviews-seo-list .yotpo-review {
@@ -198,16 +198,21 @@
     gap: 8px;
     position: absolute;
     bottom: 50px;
-    left: 0;
-    width: 55%;
+    left: -30px;
     text-align: right;
     justify-items: end;
     justify-content: end;
     margin: 0;
+    transform: translateX(-50%);
+    margin-left: 50%;
+}
+
+#yotpo-reviews-seo-page[class*="yotpo-display-"].yotpo-display-laptop .yotpo-reviews-seo-list .yotpo-review .yotpo-review-center-panel .yotpo-star-rating {
+    /* width: 53%; */
 }
 
 #yotpo-reviews-seo-page[class*="yotpo-display-"].yotpo-display-mobile .yotpo-reviews-seo-list .yotpo-review .yotpo-review-center-panel .yotpo-star-rating {
-    width: 63%;
+    /* width: 63%; */
     bottom: 40px;
 }
 
@@ -280,13 +285,18 @@
     font-size: 12px;
     position: absolute;
     bottom: 50px;
-    width: 43%;
-    right: 0;
     text-align: left;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    left: 65px;
 }
 
+/* #yotpo-reviews-seo-page[class*="yotpo-display-"].yotpo-display-laptop .yotpo-reviews-seo-list .yotpo-review .yotpo-review-right-panel .yotpo-review-details .yotpo-review-date .yotpo-date-format {
+    width: 45%;
+} */
+
 #yotpo-reviews-seo-page[class*="yotpo-display-"].yotpo-display-mobile .yotpo-reviews-seo-list .yotpo-review .yotpo-review-right-panel .yotpo-review-details .yotpo-review-date .yotpo-date-format {
-    width: 33%;
+    /* width: 33%; */
     bottom: 41px;
 }
 
@@ -296,6 +306,7 @@
 
 #yotpo-reviews-seo-page[class*="yotpo-display-"] .yotpo-reviews-seo-list .yotpo-review .yotpo-review-center-panel .yotpo-review-content a.yotpo-read-more {
     text-transform: none;
+    font-size: 14px;
 }
 
 #yotpo-reviews-seo-page[class*="yotpo-display-"] .yotpo-reviews-seo-list .yotpo-review .yotpo-review-center-panel:has(.yotpo-review-title:empty) {
