@@ -650,6 +650,7 @@
     box-sizing: border-box;
     overflow: auto;
     margin: 0;
+    height: auto;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .modal-backdrop.yotpo-media-modal .yotpo-media-modal-media {
