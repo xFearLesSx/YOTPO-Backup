@@ -1,0 +1,12 @@
+[class*="yotpo-display-"][class*="yotpo-device-"][style].yotpo-device-mobile .modal-backdrop.yotpo-media-modal {
+    background-color: #fff;
+    overflow-y: scroll;
+}
+
+[class*="yotpo-display-"][class*="yotpo-device-"][style].yotpo-device-mobile .modal-backdrop.yotpo-media-modal #yotpo-modal {
+    overflow-y: unset;
+}
+
+[class*="yotpo-display-"][class*="yotpo-device-"][style].yotpo-device-mobile .modal-backdrop.yotpo-media-modal #yotpo-modal .yotpo-review {
+    margin: 10px;
+}
