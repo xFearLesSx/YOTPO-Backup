@@ -1,36 +1,76 @@
 @font-face {
-font-family: 'Gotham';
-src: url('https://cdn.shopify.com/s/files/1/0708/4605/4708/files/Gotham-Book.woff2?v=1686757167') format('woff2');
-font-weight: 350;
-font-style: normal;
-font-display: swap;
-}
-
-@font-face {
-font-family: 'Gotham';
-src: url('https://cdn.shopify.com/s/files/1/0708/4605/4708/files/Gotham-Bold.woff2?v=1711537660') format('woff2');
-font-weight: bold;
-font-style: normal;
-font-display: swap;
-}
-
-@font-face {
-font-family: 'yotpo-widget-font';
-src: url("//staticw2.yotpo.com/assets/yotpo-widget-font.eot?version=2022-10-06_07-58-33");
-src: url("//staticw2.yotpo.com/assets/yotpo-widget-font.eot?version=2022-10-06_07-58-33#iefix") format("embedded-opentype"),url("//staticw2.yotpo.com/assets/yotpo-widget-font.woff?version=2022-10-06_07-58-33") format("woff"),url("//staticw2.yotpo.com/assets/yotpo-widget-font.ttf?version=2022-10-06_07-58-33") format("truetype"),url("//staticw2.yotpo.com/assets/yotpo-widget-font.svg?version=2022-10-06_07-58-33") format("svg");
-font-weight: normal;
-font-style: normal;
-font-display: swap
-}
+    font-family: Helvetica;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_n4.fe093fe9ca22a15354813c912484945a36b79146.woff2?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=fc16ca57a9df7f4e5b413796a99493555bb7381f0a5f79d358a8b9299830fe2e") format("woff2"),
+         url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_n4.8bddb85c18a0094c427a9bf65dee963ad88de4e8.woff?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=e8e151e558a574a833d016572412d59e898cd97a63ab94af0322293746c9bf77") format("woff");
+  }
+  @font-face {
+    font-family: Helvetica;
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_n7.39bee04bd277a9c4e94e2fd42d53f4e3c0afb8a5.woff2?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=f968535c8e0c5bf28c3e9f137043c93acd8a2b9548c53ec7422d13c5b6f68561") format("woff2"),
+         url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_n7.b95359461a6788d5549e702cb2123bc40c227e49.woff?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=5c0f8b1d92096acd9e2011fddccb90d82a731be63e1eada7f2c553db5d4fb547") format("woff");
+  }
+  @font-face {
+    font-family: Helvetica;
+    font-weight: 400;
+    font-style: oblique;
+    font-display: swap;
+    src: url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_o4.f9832a0fc1ee8fc5a359636e410d6941e1e4ca03.woff2?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=0186e9a7050fb89431a9932c8cc4cfe522c3396f9bf9d31d93f3b6e8071b3669") format("woff2"),
+         url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_o4.0063286aec443697ebae04eeb9c78b820f9f7805.woff?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=9d4fb47e5ae3057cee60d0431c750e0128b72728a45d199220f4555884663f47") format("woff");
+  }
+  @font-face {
+    font-family: Helvetica;
+    font-weight: 700;
+    font-style: oblique;
+    font-display: swap;
+    src: url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_o7.215fd4ca1a06214fa01e44328a1992c977700ea2.woff2?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=7492941bcbb96af8b49c8a7fd0dd084c3aac777f28b201734ce5097dc68b6e4a") format("woff2"),
+         url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_o7.b0a2026ae2aa64d060f9ce0ee1b3c3c1aa21bf88.woff?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=41216dcdd52512e9285249109eec1e3864a64a9983dc13a9b36194a9397d3fb9") format("woff");
+  }
+  @font-face {
+    font-family: Helvetica;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_n4.fe093fe9ca22a15354813c912484945a36b79146.woff2?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=fc16ca57a9df7f4e5b413796a99493555bb7381f0a5f79d358a8b9299830fe2e") format("woff2"),
+         url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_n4.8bddb85c18a0094c427a9bf65dee963ad88de4e8.woff?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=e8e151e558a574a833d016572412d59e898cd97a63ab94af0322293746c9bf77") format("woff");
+  }
+  @font-face {
+    font-family: Helvetica;
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_n7.39bee04bd277a9c4e94e2fd42d53f4e3c0afb8a5.woff2?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=f968535c8e0c5bf28c3e9f137043c93acd8a2b9548c53ec7422d13c5b6f68561") format("woff2"),
+         url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_n7.b95359461a6788d5549e702cb2123bc40c227e49.woff?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=5c0f8b1d92096acd9e2011fddccb90d82a731be63e1eada7f2c553db5d4fb547") format("woff");
+  }
+  @font-face {
+    font-family: Helvetica;
+    font-weight: 400;
+    font-style: oblique;
+    font-display: swap;
+    src: url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_o4.f9832a0fc1ee8fc5a359636e410d6941e1e4ca03.woff2?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=0186e9a7050fb89431a9932c8cc4cfe522c3396f9bf9d31d93f3b6e8071b3669") format("woff2"),
+         url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_o4.0063286aec443697ebae04eeb9c78b820f9f7805.woff?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=9d4fb47e5ae3057cee60d0431c750e0128b72728a45d199220f4555884663f47") format("woff");
+  }
+  @font-face {
+    font-family: Helvetica;
+    font-weight: 700;
+    font-style: oblique;
+    font-display: swap;
+    src: url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_o7.215fd4ca1a06214fa01e44328a1992c977700ea2.woff2?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=7492941bcbb96af8b49c8a7fd0dd084c3aac777f28b201734ce5097dc68b6e4a") format("woff2"),
+         url("//hdmuscle.ca/cdn/fonts/helvetica/helvetica_o7.b0a2026ae2aa64d060f9ce0ee1b3c3c1aa21bf88.woff?h1=aGRtdXNjbGUuY2E&h2=aGQtbXVzY2xlLWNhLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=41216dcdd52512e9285249109eec1e3864a64a9983dc13a9b36194a9397d3fb9") format("woff");
+  }
 
 :root {
-    --YotpoPrimaryColor: #555;
-    --YotpoSecondaryColor: #FF984C;
-    --YotpoPrimaryFont:'Gotham', var(--YotpoFallbackFont);
-    --YotpoSecondaryFont:'Gotham', var(--YotpoFallbackFont);
+    --YotpoPrimaryColor: #02081c;
+    --YotpoSecondaryColor: #4f586f;
+    --YotpoPrimaryFont:'Helvetica', var(--YotpoFallbackFont);
+    --YotpoSecondaryFont:'Arial', var(--YotpoFallbackFont);
     --YotpoFallbackFont: sans-serif;
     --YotpoLogoIconColor : var(--YotpoSecondaryColor);
-    --YotpoAvatarBackgroundColor: var(--YotpoPrimaryColor);
+    --YotpoAvatarBackgroundColor: var(--YotpoSecondaryColor);
     --YotpoVerifiedIconBackgroundColor: #1cc286;
     --YotpoPaginationBackground: var(--YotpoSecondaryColor);
     --YotpoCustomAvatarBackground: url(https://cdn-yotpo-images-production.yotpo.com/App/531793/179197833/thumb.png?1623250721);
@@ -69,10 +109,9 @@ font-display: swap
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-head {
     justify-content: end;
-    padding: 0;
+    padding: 50px 0;
     border-top: none;
     margin: 0;
-    display: none;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] * {
@@ -121,34 +160,18 @@ font-display: swap
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-layout-header-wrapper {
-    flex-direction: row;
-    gap: 25px;
-    width: 100%;
-    justify-content: space-between;
-    align-items: start;
-    margin: 40px 0;
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style].yotpo-device-mobile .yotpo-header-container .yotpo-layout-header-wrapper {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 25px;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"]:not(.yotpo-device-mobile) .yotpo-header-container .yotpo-new-review-btn-wrapper {
-    align-self: start;
+    align-self: end;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-layout-header-wrapper .yotpo-bottom-line {
     margin: 0;
     column-gap: 40px;
     align-items: center;
-    justify-content: start;
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style].yotpo-device-mobile .yotpo-header-container .yotpo-layout-header-wrapper .yotpo-bottom-line {
-    width: 100%;
-    gap: 20px;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-layout-header-wrapper .yotpo-bottom-line [class*="yotpo-bottom-line-question-wrapper-"] {}
@@ -168,8 +191,8 @@ font-display: swap
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-question-form .form-footer .yotpo-question-submit,
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-vertical-pagination .yotpo-reviews-pagination-item,
 [class*="yotpo-display-"][class*="yotpo-device-"].yotpo-device-mobile .yotpo-vertical-pagination .yotpo-pagination-item {
-    background: #fff;
-    color: var(--YotpoPrimaryColor);
+    background: var(--YotpoPrimaryColor);
+    color: #fff;
     border: 1px solid var(--YotpoPrimaryColor);
     border-radius: 0;
     width: auto;
@@ -196,7 +219,6 @@ font-display: swap
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-layout-header-wrapper .yotpo-bottom-line .yotpo-bottom-line-score {
     padding: 0;
     line-height: 1;
-    display: none;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-layout-header-wrapper .yotpo-bottom-line .yotpo-bottom-line-right-panel {
@@ -220,10 +242,6 @@ font-display: swap
     text-align: center;
 }
 
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-layout-header-wrapper .yotpo-bottom-line .yotpo-bottom-line-text .yotpo-bottom-line-basic-text {    
-    font-weight: 700;
-}
-
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-layout-header-wrapper .yotpo-star-rating-icon,
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-star-rating-icon {
     transform: scale(1);
@@ -234,16 +252,9 @@ font-display: swap
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution {
-    border: none !important;
-    gap: 8px;
-    border-left: 1px solid #e3e3e3 !important;
-    padding: 0 0 0 30px;
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style].yotpo-device-mobile .yotpo-header-container .yotpo-star-distribution {
-    margin: 0 auto;
     padding: 0;
     border: none !important;
+    gap: 8px;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-distribution-row {
@@ -251,77 +262,22 @@ font-display: swap
     gap: 10px;
 }
 
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-distribution-row:hover .yotpo-star-distribution-index {
-    text-decoration: none;
-}
-
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-progress-bar,
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-star-distribution-bar,
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-progress-bar-score {
     margin: 0;
     border-radius: 0;
-    height: 10px;
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-distribution-row .yotpo-star-distribution-bar {
-    order: 3;
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-progress-bar-score {
-    background: var(--YotpoSecondaryColor) !important;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-star-distribution-value {
     height: auto;
     line-height: 1;
-    width: 100%;
-    text-align: left;
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-star-distribution-value::before {
-    content: '(';
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-star-distribution-value::after {
-    content: ')';
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-distribution-row .yotpo-star-rating-icon {
-    display: none;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-star-distribution-index {
     width: auto;
     line-height: 1;
     margin: 0;
-    font-size: 0;
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-star-distribution-index::before {
-    content: "";
-    font-family: "yotpo-widget-font" !important;
-    color: #FF984C;
-    font-size: 16px;
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-distribution-row[aria-label^="5 star"] .yotpo-star-distribution-index::before {
-    content: "\e60e \e60e \e60e \e60e \e60e";
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-distribution-row[aria-label^="4 star"] .yotpo-star-distribution-index::before {
-    content: "\e60e \e60e \e60e \e60e \e61b";
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-distribution-row[aria-label^="3 star"] .yotpo-star-distribution-index::before {
-    content: "\e60e \e60e \e60e \e61b \e61b";
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-distribution-row[aria-label^="2 star"] .yotpo-star-distribution-index::before {
-    content: "\e60e \e60e \e61b \e61b \e61b";
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container .yotpo-star-distribution .yotpo-distribution-row[aria-label^="1 star"] .yotpo-star-distribution-index::before {
-    content: "\e60e \e61b \e61b \e61b \e61b";
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-header-container + .yotpo-review-border-smooth {
@@ -335,7 +291,6 @@ font-display: swap
     padding: 40px 0;
     border-top: 1px solid #e3e3e3;
     border-bottom: 1px solid #e3e3e3;
-    display: none;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-filters-container .yotpo-filters-container-inner {
@@ -348,14 +303,21 @@ font-display: swap
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-filters-container .yotpo-filters-top-panel {
     flex-basis: 100%;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: space-between;
     gap: 20px;
+    flex-direction: row;
+    padding: 40px 0 0;
+    position: relative;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-filters-container .yotpo-filters-top-panel::before {
     content: "Filter Reviews";
     font-weight: 700;
+    width: 100%;
+    text-align: left;
+    position: absolute;
+    top: 0;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-filters-container .yotpo-filters-top-panel > [class$="filter-container"] {
@@ -427,17 +389,6 @@ font-display: swap
     background: var(--YotpoSecondaryColor);
 }
 
-[class*="yotpo-display-"][class*="yotpo-device-"][style] [class*="filter"] .yotpo-dropdown-content {    
-    width: 100%;
-    height: auto;
-    padding: 10px;
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] [class*="filter"] .yotpo-dropdown-content .yotpo-score-option {
-    width: 100%;
-    margin: 0;
-}
-
 /* mobile filter modal */
 [class*="yotpo-display-"][class*="yotpo-device-"].yotpo-device-mobile #yotpo-mobile-filters-popup {}
 
@@ -485,9 +436,7 @@ font-display: swap
 /* REVIEWS */
 [class*="yotpo-display-"][class*="yotpo-device-"][style] #yotpo-reviews-container {}
 
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-reviews-list {
-    border-top: 1px solid #e3e3e3;
-}
+[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-reviews-list {}
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-reviews-list > .yotpo-review-votes-wrapper {
     margin: 0;
@@ -569,7 +518,6 @@ font-display: swap
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-verified-image-icon .yotpo-verified-icon > circle {
     fill: var(--YotpoVerifiedIconBackgroundColor);
-    display: none;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-verified-image-icon .yotpo-verified-icon-wrapper {
@@ -727,14 +675,7 @@ font-display: swap
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-right-panel {
     margin: 0;
     order: 2;
-    flex-basis: auto;
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-right-panel .yotpo-date-format {
-    background: #c8f3d7;
-    padding: 6px;
-    font-size: 14px;
-    width: max-content;
+    flex-basis: 30%;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-right-panel .yotpo-custom-questions-range-question-wrapper {}
@@ -828,11 +769,6 @@ font-display: swap
     margin: 0;
     box-sizing: border-box;
     padding: 40px;
-}
-
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .modal-backdrop.yotpo-media-modal .yotpo-media-modal-review .yotpo-review-right-panel .yotpo-review-details {
-    display: flex;
-    justify-content: end;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"].yotpo-device-mobile .modal-backdrop.yotpo-media-modal .yotpo-media-modal-review {
