@@ -664,6 +664,7 @@ src: url("//www.allbirds.com/cdn/shop/t/2186/assets/geograph-bold.woff2?v=664652
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style].yotpo-device-mobile .yotpo-review .yotpo-review-left-panel {
     order: 1;
+    width: auto;
     max-width: 100%;
 }
 
@@ -697,6 +698,7 @@ src: url("//www.allbirds.com/cdn/shop/t/2186/assets/geograph-bold.woff2?v=664652
     overflow: unset;
     width: auto !important;
     padding: 10px;
+    margin-top: 15px;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style].yotpo-device-mobile .yotpo-review .yotpo-review-center-panel .yotpo-review-questions-mobile-panel .yotpo-custom-questions-free-text-question {
@@ -721,7 +723,7 @@ src: url("//www.allbirds.com/cdn/shop/t/2186/assets/geograph-bold.woff2?v=664652
     align-items: start;
 }
 
-[class*="yotpo-display-"][class*="yotpo-device-"][style].yotpo-device-mobile .yotpo-review .yotpo-review-left-panel .yotpo-reviewer {width: max-content;padding: 10px;}
+[class*="yotpo-display-"][class*="yotpo-device-"][style].yotpo-device-mobile .yotpo-review .yotpo-review-left-panel .yotpo-reviewer {width: max-content;padding: 0;}
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-left-panel:has(.yotpo-review-customer-questions-container) .yotpo-reviewer {
     height: auto;
@@ -734,7 +736,6 @@ src: url("//www.allbirds.com/cdn/shop/t/2186/assets/geograph-bold.woff2?v=664652
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-left-panel .yotpo-reviewer .yotpo-reviewer-details-verified {
-    padding: 0;
     width: 100%;
     border-bottom: none;
     flex-direction: row;
@@ -742,9 +743,16 @@ src: url("//www.allbirds.com/cdn/shop/t/2186/assets/geograph-bold.woff2?v=664652
     padding: 25px;
 }
 
-[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-left-panel:has(.yotpo-review-customer-questions-container) .yotpo-reviewer .yotpo-reviewer-details-verified {
+[class*="yotpo-display-"][class*="yotpo-device-"][style].yotpo-device-mobile .yotpo-review .yotpo-review-left-panel .yotpo-reviewer .yotpo-reviewer-details-verified {
+    padding: 10px;
+    flex-direction: column;
+    gap: 5px;
+}
+
+[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-left-panel:has(.yotpo-review-customer-questions-container) .yotpo-reviewer [class*="yotpo-reviewer-details"] {
     border-bottom: 1px solid rgb(211, 212, 213);
     padding: 0 0 10px;
+    width: 100%;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-left-panel .yotpo-reviewer .yotpo-reviewer-details-verified .yotpo-verified-icon {
@@ -784,7 +792,9 @@ src: url("//www.allbirds.com/cdn/shop/t/2186/assets/geograph-bold.woff2?v=664652
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] [class*="-details-verified"] .yotpo-reviewer-verified-buyer-text, 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] [class*="-details-verified"] .yotpo-verified-text {
-    color: var(--YotpoPrimaryColor)
+    color: var(--YotpoPrimaryColor);
+    margin: 0 !important;
+    font-style: italic;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-verified-image-icon .yotpo-avatar-initials-text {
@@ -891,7 +901,23 @@ src: url("//www.allbirds.com/cdn/shop/t/2186/assets/geograph-bold.woff2?v=664652
     font-weight: 600;
 }
 
+[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-center-panel .yotpo-review-questions-mobile-panel .yotpo-custom-questions-range-question-wrapper .yotpo-progress-bar-wrapper .yotpo-progress-bar-value {
+    margin: 0 !important;
+}
+
+[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-center-panel .yotpo-review-questions-mobile-panel .yotpo-custom-questions-range-question-wrapper .yotpo-progress-bar-wrapper .yotpo-progress-bar-value-label {
+    color: var(--YotpoPrimaryColor);
+    font-weight: 400;
+    position: static;
+    margin: 0;
+    width: 100%;
+}
+
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-center-panel .yotpo-review-questions-mobile-panel .yotpo-custom-questions-range-question-wrapper .yotpo-progress-bar-wrapper {
+    /* display: none; */
+}
+
+[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-center-panel .yotpo-review-questions-mobile-panel .yotpo-custom-questions-range-question-wrapper .yotpo-progress-bar-wrapper .yotpo-progress-bar, [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-center-panel .yotpo-review-questions-mobile-panel .yotpo-custom-questions-range-question-wrapper .yotpo-progress-bar-wrapper .yotpo-progress-bar-value-point {
     display: none;
 }
 

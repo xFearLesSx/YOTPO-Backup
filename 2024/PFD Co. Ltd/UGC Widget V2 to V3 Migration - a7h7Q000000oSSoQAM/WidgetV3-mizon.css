@@ -80,6 +80,10 @@
 /* Widget Tab */
 
 /* YOTPO Icon on Header */
+[class*="yotpo-display-"][class*="yotpo-device-"] .yotpo-head {
+    justify-content: end;
+}
+
 [class*="yotpo-display-"][class*="yotpo-device-"][style]  .yotpo-reviews-icon path {
     fill: var(--YotpoLogoIconColor);
 }
@@ -372,6 +376,7 @@
     gap: 5px;
 }
 
+[class*="yotpo-display-"][class*="yotpo-device-"][style] [title],
 [class*="yotpo-display-"][class*="yotpo-device-"][style] [class*="-details-verified"] [title] {
     color: var(--YotpoPrimaryColor) !important;
     font-weight: 700;
