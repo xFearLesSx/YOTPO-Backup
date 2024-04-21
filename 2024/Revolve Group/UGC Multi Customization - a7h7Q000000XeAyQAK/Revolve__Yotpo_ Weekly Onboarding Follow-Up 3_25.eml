@@ -1,0 +1,1937 @@
+Delivered-To: lfirestone@yotpo.com
+Received: by 2002:a05:6a11:3023:b0:541:1b32:b0ac with SMTP id xi35csp1224856pxb;
+        Fri, 5 Apr 2024 15:51:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGCAww377xseFhuLACY84e8YFRM69Mha4qn6U2JbAqJiiBY8iNbGnlVFJ6bTZDF50rcAcYj
+X-Received: by 2002:ac8:5bca:0:b0:434:4a12:e3a0 with SMTP id b10-20020ac85bca000000b004344a12e3a0mr4898001qtb.24.1712357507279;
+        Fri, 05 Apr 2024 15:51:47 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1712357507; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=tsvmwb1HNvJrcj9ngoQrSghcCo/YviteqRXoZHlBQQ8dkAYeqHCGGQTJk4mdnFx2OJ
+         7m4c5kKCPAJD9mtfetkmfOZcQ0nsh6hBODyBxVIxCsHtD1lDGLvCq1AyYElJPohKTx91
+         lQDNxCIT2yAtR+74JqbSTwE4QT2MEY8VGQzCzdY7iYi6jRj1rMRLqljXAv/0i+DmXsUO
+         KjRwwPYbyvPqMT872QDXqceXka6jolaxFK2U1Ibcuzwvg6ZzzmGJXDNspKANEJ6ZzOk3
+         pz22fT4Mi+9xhG8qEk/i9qe5RUW/j1Vu3t8JzB/UaJMiMzHw2Dvar8rAlDol64MZfJ1/
+         BuZQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=Nv8KsVgQ5xvhnVPd8d7zoBuko//mFXLhIX08GTVWrOk=;
+        fh=Vn5WzbkyMuTBwv8xVcbmWMoK6aL5UfGuCHhtWSF2ypc=;
+        b=IXdAKTDo9D9h/qEBqeXYS9LxYbi6bdMv9UQth7fWk26lgSHQjWzEJ0MtMpA4pzCce2
+         YKnRRnM8th10LjcUFPJ5ndkeZbbMKNIZ0krz36Ta6iQAWY66jhPsQX1pe2gLCllTBzuD
+         5C4oQY2288HS9N84EA//Zm+ePiCg4hbN4bTP5yLsxUJ0RvDxAUF8go0dJFJxo5N5mSkB
+         WD2BuouQjvtaGn/NH6oDaptpp/6K7sAUxheZKE5gjgAgqcboQhkps/nxyVLlVqUnzBw8
+         TJXa2TSewEB1M+pmY0r0RQsQT+yLhPPNcJ2iN9cCl33z/mwVqaMob0JqMfNr5owaT6R4
+         v7hQ==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@revolve.com header.s=google header.b=Vd7PcM69;
+       arc=pass (i=1 dkim=pass dkdomain=revolve.com);
+       gateway.spf=pass (google.com: domain yotpo.com configured 54.227.64.76 as internal address) smtp.mailfrom=andrew.liu@revolve.com smtp.remote-ip=54.227.64.76 policy.d=yotpo.com
+Return-Path: <andrew.liu@revolve.com>
+Received: from nat.perception-point.io (nat.perception-point.io. [54.227.64.76])
+        by mx.google.com with ESMTPS id 18-20020ac85952000000b0043467e02551si1354816qtz.486.2024.04.05.15.51.47
+        for <lfirestone@yotpo.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Apr 2024 15:51:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain yotpo.com configured 54.227.64.76 as internal address)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@revolve.com header.s=google header.b=Vd7PcM69;
+       arc=pass (i=1 dkim=pass dkdomain=revolve.com);
+       gateway.spf=pass (google.com: domain yotpo.com configured 54.227.64.76 as internal address) smtp.mailfrom=andrew.liu@revolve.com smtp.remote-ip=54.227.64.76 policy.d=yotpo.com
+Authentication-Results: amazonses.com;
+ spf=Scan bypassed
+ dmarc=none;
+X-PERCEPTION-POINT-VERDICT: CLN
+X-PERCEPTION-POINT-SUB-VERDICT: CLN
+X-PERCEPTION-POINT-SPF: 
+X-PERCEPTION-POINT-SPAM: PASS
+X-PERCEPTION-POINT-BEC-VERDICT: PASS
+X-PERCEPTION-POINT-DKIM: 
+Return-Path: <andrew.liu@revolve.com>
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com [209.85.214.197])
+ by inbound-smtp.us-east-1.amazonaws.com with SMTP id p385e88ke0fd5j0mrc1k08794n27cifniuqie681
+ for lfirestone@yotpo.com;
+ Fri, 05 Apr 2024 22:51:10 +0000 (UTC)
+X-SES-Spam-Verdict: PASS
+X-SES-Virus-Verdict: PASS
+Received-SPF: Scan bypassed
+X-SES-RECEIPT: AEFBQUFBQUFBQUFINlJlWDF1S3hnWFZFSWN5OW53ZjBXdGcvV1BGMzBOK1g1TU9sMUJPazQ1eXpRWmcrRUQzaitNbEJlT3NhWjB4R1gxUE1IUEhlbG9OdVBXSTMyTmswZWxZUE1nYXllWlVxV0NrUG9oUFBXTGFuVzNGWUZZdU9aQmxpcmFUTWpBNGxWMU4xSkJQdHBiK2hzUXJralM2OVhtejJ1WVVrS2RzQmRoQ3p5NGdENG92TGl0NWZ1QVpUWHdZVm1uS3FaTDgraHRNOGRlNnZUbVBlRHFQUmR1TEduLzBLeXpvT0JyWW9yeCt6SGpwVEJxWmNXVnRMRDVaS0FYT2c2ZUxWZ1lZMERTNXd2N2x0YUJSZnAwNzlJalhzL3ZFeDc5UHR5TjZXd3dGTXl6VWFTSzlhRGRrRHhLdStuTzBVODhLSlUrdUE9
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=Tz8YkiZFEFMQHsZ3JjY63msBK9AtmKtqYt8Nkl8fEct0cbQkpJ/seHfbWn7VQe4jAetxte33ZWlLXfn2ICVZMlEWSPZ910pzBJ3V5NQyJYbQorqCtP5GeA/8+oisM7rnzMo+T6lZz0PCr68yoDmbx9p+5Y/a4EGNJ+S78Rm5ZcY=; c=relaxed/simple; s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1712357470; v=1; bh=HcDcivP3osfR22xua8rT9G2FiFNH2u13cWpVtYuboVM=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-1e3c8d7d87cso5588205ad.1
+        for <lfirestone@yotpo.com>; Fri, 05 Apr 2024 15:51:10 -0700 (PDT)
+X-Gm-Message-State: AOJu0Yziv6M6NXM1iF3r5310/ycoEAtRapbY1SR2NtG09IBtHCM7EtsH
+	lh+0cgGWUBq6LRN5Fz7o6JPX/Hn4xRQjKti9zeQeUEVxk+yyqFBHOBh6T2p6hfrM4+LNrF3Mc50
+	K1dLbX90UIaFfF5IRCw+WLA4hQCljpOeS8SBmSN83POK70GG544RtMBpofUxUErXzt8WguBuUIc
+	skkjMC
+X-Received: by 2002:a17:902:d512:b0:1e0:cea:257e with SMTP id b18-20020a170902d51200b001e00cea257emr5650298plg.2.1712357468527;
+        Fri, 05 Apr 2024 15:51:08 -0700 (PDT)
+X-Received: by 2002:a17:902:d512:b0:1e0:cea:257e with SMTP id b18-20020a170902d51200b001e00cea257emr5650238plg.2.1712357467049;
+        Fri, 05 Apr 2024 15:51:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712357467; cv=none;
+        d=google.com; s=arc-20160816;
+        b=t3BcLuR5vMss2dXPom4NIRp/vKCsbLafqKJNzv+O1RAeFXDdiszBcdOHQfszvxteuL
+         eCLnUTGE0/9JyE+wWTpPtWiq/qWE6LOU+LdKrFYkSkd3JAs45OX9bqWQohv5cmd3/Ubf
+         Xgjfpl/BysTCXWIq14urLKBFcjNgU1VgTTv0u2+cbJKt5TD4XZ/KLpVvtL3uPCB2hP3s
+         uwhOtFSdmI+uP8iHGAij+YHzIMESxvXFh7cbnKTtxuSpfiAEemCJLafMHB+SDXuSL2ha
+         8GXEabj1p8NSVjjEFj3LXXSklDIJv9bCWsCbvZTbcJg93cqTDdvazoziDplALx0En+PE
+         Z8aw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=Nv8KsVgQ5xvhnVPd8d7zoBuko//mFXLhIX08GTVWrOk=;
+        fh=Vn5WzbkyMuTBwv8xVcbmWMoK6aL5UfGuCHhtWSF2ypc=;
+        b=eVYNKVqib4WzpxwX/BKsfsd4cF7v15sGVyvXLDcMsdwesGy5bMYiE+eztLvbmdlE6i
+         NRPG8+zzZygfC8/dwb5CIjWyBPZ+W8mtqCitSr1a5IPVUxyZKM/tAuFpGr6z9D1HjESE
+         dSLIVbt6dT4N9tUHele2phYTmd4PvUksaiVtjuY+17XZoCsK9mgMN3AgAoftxawqOAVO
+         jQzrw//8q/WXzRjc1KeLPJBjtWRq4Rb+oXla5stkX0zgP8Z1K4JbOMAI9PvxYVovw0hB
+         5V+ZTNf6IEqQ1fVZMT6vZW0L9fZ1NK8FGrKCPtLBoKuobnLLMJle04XHs0mZmyBllCv2
+         EOKA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@revolve.com header.s=google header.b=Vd7PcM69;
+       gateway.spf=pass (google.com: domain yotpo.com configured 209.85.220.41 as internal address) smtp.mailfrom=andrew.liu@revolve.com smtp.remote-ip=209.85.220.41 policy.d=yotpo.com
+Return-Path: <andrew.liu@revolve.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b14-20020a170902650e00b001e294d2b0ccsor1146452plk.0.2024.04.05.15.51.06
+        for <lfirestone@yotpo.com>
+        (Google Transport Security);
+        Fri, 05 Apr 2024 15:51:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain yotpo.com configured 209.85.220.41 as internal address)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=revolve.com; s=google; t=1712357466; x=1712962266; darn=yotpo.com;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Nv8KsVgQ5xvhnVPd8d7zoBuko//mFXLhIX08GTVWrOk=;
+        b=Vd7PcM69q2GQpso0cu3l3DkBLldpzoHwJj+OOiLGA+jdg6V7avtyMPgxzpmChc+jZT
+         M0mRka8ZTnEIMU/OpyxdM7aol7HutkcYFfbWgFxBwlxNcDzts2oNI8LgcNXIhW9ldIQN
+         iTCYT4KjxUTLYz5rguTlvpx2SNhzkScCR5/vQ=
+X-Received: by 2002:a17:902:db09:b0:1e0:b628:a752 with SMTP id
+ m9-20020a170902db0900b001e0b628a752mr5167402plx.7.1712357465990; Fri, 05 Apr
+ 2024 15:51:05 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAN-mkvLcp-9LFFiskcODzo4dL6LgdCntMxotPdpXGd+d=Fpb4A@mail.gmail.com>
+ <CAHo5+gsSHtujT-ayDcgZkK=uPSXmsP5+XnEnaw8phBHos==a3A@mail.gmail.com>
+ <CAMKf5BMcMJW6HFv2ORd=5yCZKEt7W1PbK0AkJ42+qnrneNaMJg@mail.gmail.com>
+ <CAN-mkvL1fX42uJTpdMA9+ertiKqcVpfyuQaL+R4TdyJqwjJ-RQ@mail.gmail.com>
+ <CAMKf5BM=ai6spboGts8Tr6zprHBWCQDFY7CX5wfDkSq_vsq4_w@mail.gmail.com>
+ <CAN-mkvJJVuNVogxXtv6NnYBTk0spC3P_iEQ2O2BBaBwwoS+cpA@mail.gmail.com>
+ <CAHo5+gvn_wt-YpyR8TWX5yyAf326Hm53uaoCXKn_3nzKPJy2dw@mail.gmail.com> <CAN-mkv+tc0YL3kcXcnaBxJQSwWc-VuvMk6NNUfW_P4nJuioccA@mail.gmail.com>
+In-Reply-To: <CAN-mkv+tc0YL3kcXcnaBxJQSwWc-VuvMk6NNUfW_P4nJuioccA@mail.gmail.com>
+From: Andrew Liu <andrew.liu@revolve.com>
+Date: Fri, 5 Apr 2024 15:50:39 -0700
+Message-ID: <CAMKf5BMOJhN+qipxkf2bnKPFwoHfwFR3XW+KkjJ5thKZFLJwPQ@mail.gmail.com>
+Subject: Re: Revolve//Yotpo: Weekly Onboarding Follow-Up 3/25
+To: Leah Firestone <lfirestone@yotpo.com>
+Cc: Grace Hong <grace.hong@revolve.com>, 
+	Davit Osipyan <davit.osipyan@revolveclothing.com>, Katie Cullen <kcullen@yotpo.com>, 
+	Ofer Karp <okarp@yotpo.com>, Ellery Shawver <ellery.shawver@yotpo.com>, 
+	Abel Lumakang <abel.lumakang@revolve.com>
+Content-Type: multipart/related; boundary="0000000000007d62270615614a21"
+X-PERCEPTION-POINT-ROUTING: xFc9Vjxg3R+nUq*8
+X-Gm-Spam: 0
+X-Gm-Phishy: 0
+
+--0000000000007d62270615614a21
+Content-Type: multipart/alternative; boundary="0000000000007d62260615614a20"
+
+--0000000000007d62260615614a20
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Leah,
+
+We appreciate the quick turnaround!
+
+All the possible UI looks good, but just some comments/questions:
+
+*PDP Widget (widget-mockup_feedback.png)*
+1. Could we have the "Would you recommend this item? Yes" to be kept on one
+line so it doesn't break? Also, there's too much of a gap between the label
+and answer.
+2. if the info of the label/answer needs to be stacked, can we have it
+similar to GF collective?
+[image: image.png]
+3. for the slider, can we have it updated with rounded edges? is this
+optional for us to turn on/off?
+[image: image.png]
+4. for the Write a Review button, would it be possible to have a similar
+pill button style like this one? So we main focus will be the content in
+the module.
+[image: image.png]
+
+*PDP Widget Modal Review Form (widget-mockup_feedback (write a review
+form).png)*
+1. Is it possible to have thumbnail + product details next to the star
+ratings (like email landing page)?
+
+*Email Landing Page (landing-page_mockup feedback.png)*
+1. Can we use the same UI as the PDP Widget Modal in terms of using push
+buttons? The *possible look mock* has radio buttons.
+2. This template has the thumbnail and product description next to the
+stars, can this be used in the PDP Widget Modal? (question #1 in *PDP
+Widget Modal Review Form)*
+
+*Email Landing Page Submission (landing-page_mockup feedback (success
+submission).png)*
+This looks good!
+
+Will we be sending *possible look* files for the other mocks?
+
+Thanks!
+
+On Fri, Apr 5, 2024 at 7:35=E2=80=AFAM Leah Firestone <lfirestone@yotpo.com=
+> wrote:
+
+> Hi Grace and Andrew,
+>
+> Happy Friday! Thank you both for your time and transparency yesterday!
+> Please find attached the mock-ups that are as close as possible to your
+> designs.
+>
+> Looking forward to hearing your feedback on Monday.
+>
+> Have a great weekend!
+> Leah
+>
+> On Wed, Apr 3, 2024 at 6:42=E2=80=AFPM Grace Hong <grace.hong@revolve.com=
+> wrote:
+>
+>> Thursday, April 4th -  12:00pmPT to 12:30pmPT works!
+>>
+>> On Wed, Apr 3, 2024 at 6:16=E2=80=AFAM Leah Firestone <lfirestone@yotpo.=
+com>
+>> wrote:
+>>
+>>> Hi Andrew and Grace,
+>>>
+>>> Please see answers inline below. Great news =F0=9F=8E=89 I was able to =
+set up time
+>>> with the customizations team! Do any of the following times work for yo=
+u?
+>>>
+>>> Thursday, April 4th - 10:00amPT, 12:00pmPT or 12:30pmPT
+>>>
+>>> Thanks,
+>>> Leah
+>>>
+>>> On Tue, Apr 2, 2024 at 2:35=E2=80=AFPM Andrew Liu <andrew.liu@revolve.c=
+om>
+>>> wrote:
+>>>
+>>>> Hi Leah,
+>>>>
+>>>> Thanks for the update. A few comments:
+>>>>
+>>>> 1. For the T+C, this is coming from the "Write a Review" modal in the
+>>>> on-site review widget
+>>>> https://yap.yotpo.com/preview-wadmin/?guid=3DtlHZAkJrpHB5lVdPMjKXm4pFb=
+RB28UeILILjcN01&widget_instance_id=3D627196&is-mobile=3Dfalse&&mode-preview=
+=3Dtrue
+>>>>  Thank you! We can add your hyperlink there, otherwise it is static
+>>>> text referencing the site's Terms & Conditions.
+>>>> 2. Can we go over this flow? Would like to see what this one looks
+>>>> like. Please see attached. We can also customize this for Revolve.
+>>>> 3. We're not trying to hide it entirely, we'd like it to be "optional"=
+,
+>>>> and if have anonymous if customer doesn't have a name. Is this somethi=
+ng
+>>>> typical? or what do you suggest as best practices? As a best practice
+>>>> we reccomend displaying the name as it boost credibilty.
+>>>>
+>>>> Also, just FYI, I added 2 more screenshots to the excalidraw whiteboar=
+d
+>>>> related to the AI Review Summary and Star Ratings
+>>>> <https://excalidraw.com/#json=3DSMkLn7KdXUA11F36Ohk31,FYi4cohPW8Buc3c0=
+lOgPWA>
+>>>>
+>>>> Thanks!
+>>>>
+>>>> On Tue, Apr 2, 2024 at 5:51=E2=80=AFAM Leah Firestone <lfirestone@yotp=
+o.com>
+>>>> wrote:
+>>>>
+>>>>> Hi Revolve Team,
+>>>>>
+>>>>> Thank you for your time today. @Andrew Liu <andrew.liu@revolve.com> a=
+nswers
+>>>>> are inline below and I've listed our action items from today. Please =
+let me
+>>>>> know how we can be of further support.
+>>>>>
+>>>>> *Revolve *
+>>>>>
+>>>>>    - Finalize Wireframes - including any changes you'd like to make
+>>>>>    to the Star widget
+>>>>>
+>>>>> *Yotpo*
+>>>>>
+>>>>>    - Coordinate call with customizations team
+>>>>>
+>>>>> *Summary - Employee Reviews*
+>>>>>
+>>>>> Revolve will build on top of the existing logic and infrastructure
+>>>>> that receives reviews and validates their requirement for a review to=
+ be
+>>>>> submitted before an employee can place another order. Revolve will se=
+nd the
+>>>>> review content to Yotpo via the create review endpoint
+>>>>> <https://apidocs.yotpo.com/reference/create-review> with the order
+>>>>> metadata that will state the review was left by an employee.
+>>>>>
+>>>>> @Davit Osipyan <davit.osipyan@revolveclothing.com> I recommend that
+>>>>> you use our trusted vendor params
+>>>>> <https://support.yotpo.com/docs/implementing-trusted-vendors#creating=
+-verified-reviews-by-api-endpoint>
+>>>>> which will allow the review to be marked with a verified buyer badge.=
+ Using
+>>>>> the data from the other params on the call you will generate a SHA
+>>>>> 256 signature
+>>>>> <https://support.yotpo.com/v1/docs/implementing-trusted-vendors#signi=
+ng-reviewer-data>
+>>>>> to pass into the signature param.
+>>>>>
+>>>>> Summary
+>>>>> On Fri, Mar 29, 2024 at 9:28=E2=80=AFPM Andrew Liu <andrew.liu@revolv=
+e.com>
+>>>>> wrote:
+>>>>>
+>>>>>> Hi Leah & Katie,
+>>>>>>
+>>>>>> Just wanted to follow up with a link to a whiteboard with yotpo
+>>>>>> design
+>>>>>> <https://excalidraw.com/#json=3DtGNako9_yIZJiAlwYbV-e,aEPg49OXa_JPdp=
+x9Lewygg>to
+>>>>>> showcase what we'd like for our implementation. We matched it as clo=
+se as
+>>>>>> possible to your design while retaining our branding.
+>>>>>>
+>>>>>> A couple of questions for discussion on Monday regarding some fields
+>>>>>> in the reviews modal:
+>>>>>> 1. There' a terms and condition agreement at the bottom. Does this
+>>>>>> link to yotpo's t+c or are we supposed to link it to ours? I sent
+>>>>>> myself a test email and didn't see it, could you please share a scre=
+enshot
+>>>>>> of the link you're referring to.
+>>>>>> 2. The required email address, does yotpo have a flow for this? Yes,
+>>>>>> a flow is trigger via Yotpo.
+>>>>>> 3. The required display name, is it possible to make this optional? =
+Revolve
+>>>>>> can hide the name CSS edits
+>>>>>> <https://support.yotpo.com/docs/hiding-the-username-in-the-reviews-w=
+idget>
+>>>>>> .
+>>>>>>
+>>>>>> Thanks
+>>>>>>
+>>>>>> On Fri, Mar 29, 2024 at 2:43=E2=80=AFPM Grace Hong <grace.hong@revol=
+ve.com>
+>>>>>> wrote:
+>>>>>>
+>>>>>>> Hi Leah,
+>>>>>>> Some comments below preceding our TB on Monday.
+>>>>>>>
+>>>>>>> =E2=80=A2 Widgets / Emails =E2=80=94 It's not clear to me the diffe=
+rence between an
+>>>>>>> "edit" vs a "new email / widget wireframe". Our team is working thr=
+ough the
+>>>>>>> design again to match at least the content structure more closely o=
+f what
+>>>>>>> yotpo put together, but the initial preview that was provided is no=
+t
+>>>>>>> anywhere close to what we would productionize, so I'm a bit confuse=
+d. Let's
+>>>>>>> discuss on Monday.
+>>>>>>>
+>>>>>>> =E2=80=A2 Employee Reviews =E2=80=94 Discussed with Davit and we'd =
+like to keep our
+>>>>>>> employee review flow in-house , and just pass them to you guys (sim=
+ilar to
+>>>>>>> this initial feed set up), to display on the site
+>>>>>>>
+>>>>>>> =E2=80=A2 Syndication =E2=80=94 I will need to work on this, but no=
+t a blocker for
+>>>>>>> launch.
+>>>>>>>
+>>>>>>>
+>>>>>>>
+>>>>>>> On Mon, Mar 25, 2024 at 1:04=E2=80=AFPM Leah Firestone <lfirestone@=
+yotpo.com>
+>>>>>>> wrote:
+>>>>>>>
+>>>>>>>> Hi Revolve Team,
+>>>>>>>>
+>>>>>>>> Thank you for your time today! Please find below a summary of our
+>>>>>>>> meeting and action items are listed on the Monday Board
+>>>>>>>> <https://yotpoent.monday.com/boards/5907406428/pulses/6252660510>.
+>>>>>>>> *Summary*
+>>>>>>>>
+>>>>>>>>    - Widgets/Emails - Three options available for next steps, @Gra=
+ce
+>>>>>>>>    Hong <grace.hong@revolve.com> please let me know which options
+>>>>>>>>    you'd like to move forward with. We're happy to support whateve=
+r is a best
+>>>>>>>>    fit for your team =E2=98=BA=EF=B8=8F
+>>>>>>>>       - Provide one round of edits to current widget and email
+>>>>>>>>       design that was implemented by Yotpo
+>>>>>>>>       - Implement New Email and Widget Wireframes (sent 3/22)
+>>>>>>>>          - Yotpo Team provides feedback and will mock up what can
+>>>>>>>>          be done Out of the Box, what would require CSS edits, and=
+ what would
+>>>>>>>>          require the development of a custom widget (3 Day SLA)
+>>>>>>>>          - Yotpo Team implements design (5-7 Day SLA)
+>>>>>>>>          - This will most likely impact our launch timeline of
+>>>>>>>>          early April
+>>>>>>>>       - Custom Development of Widget
+>>>>>>>>          - Based on wireframe feedback, Revolve Team would develop
+>>>>>>>>          their own custom front end widget
+>>>>>>>>       - Employee Reviews
+>>>>>>>>       - Due to Yotpo internal checks on reviews (ie - profanity)
+>>>>>>>>       it takes several hours for reviews to be processed before th=
+ey'll be seen
+>>>>>>>>       in moderation or on the widget
+>>>>>>>>       - Revolve will investigate an alternative to the current
+>>>>>>>>       employee review page
+>>>>>>>>       - Revolve to discuss internally the importance of having
+>>>>>>>>       this custom feature built for launch
+>>>>>>>>    - Syndication
+>>>>>>>>       - Revolve to discuss internally the process to share a
+>>>>>>>>       'Revolve ID' with external brands
+>>>>>>>>
+>>>>>>>> Please let us know how we can be of further support.
+>>>>>>>>
+>>>>>>>> Thanks,
+>>>>>>>> Leah
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> --
+>>>>>>>>
+>>>>>>>> *Leah Firestone*
+>>>>>>>>
+>>>>>>>> Enterprise Client Success Manager
+>>>>>>>>
+>>>>>>>> e: lfirestone@yotpo.com
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> <http://events.yotpo.com/retain-forward-fall2023?utm_source=3Dempl=
+oyees&utm_medium=3Dsocial&utm_campaign=3DGlobal_Events_Virtualevent_RetainF=
+orwardH2_November2023&utm_term=3DLeahFirestone>
+>>>>>>>>
+>>>>>>>>
+>>>>>>>>
+>>>>>>>>
+>>>>>>>
+>>>>>>> --
+>>>>>>>
+>>>>>>> Grace Hong
+>>>>>>>
+>>>>>>> *VP of Product + Design*
+>>>>>>>
+>>>>>>> REVOLVE
+>>>>>>>
+>>>>>>> @REVOLVE I www.REVOLVE.com <http://www.revolve.com/>
+>>>>>>>
+>>>>>>> *@FWRD *I *www.FWRD.com* <http://www.revolveclothing.com/>
+>>>>>>>
+>>>>>>> 12889 Moore St.
+>>>>>>>
+>>>>>>> Cerritos, CA 90703
+>>>>>>>
+>>>>>>>
+>>>>>>> <https://www.instagram.com/REVOLVE/>   <http://www.revolve.com/>
+>>>>>>>
+>>>>>>
+>>>>>>
+>>>>>> --
+>>>>>> *ANDREW LIU*
+>>>>>> UX FRONT END
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>> *REVOLVE*
+>>>>>> 12889 Moore St.
+>>>>>> CERRITOS, CA 90703
+>>>>>> www.revolve.com
+>>>>>> @REVOLVE | @REVOLVEman
+>>>>>>
+>>>>>
+>>>>>
+>>>>> --
+>>>>>
+>>>>> *OOO - 3/28*
+>>>>>
+>>>>> *Delayed Response - 4/1 to 4/5*
+>>>>>
+>>>>> *Leah Firestone*
+>>>>>
+>>>>> Enterprise Client Success Manager
+>>>>>
+>>>>> e: lfirestone@yotpo.com
+>>>>>
+>>>>>
+>>>>> <http://events.yotpo.com/retain-forward-fall2023?utm_source=3Demploye=
+es&utm_medium=3Dsocial&utm_campaign=3DGlobal_Events_Virtualevent_RetainForw=
+ardH2_November2023&utm_term=3DLeahFirestone>
+>>>>>
+>>>>>
+>>>>>
+>>>>>
+>>>>
+>>>> --
+>>>> *ANDREW LIU*
+>>>> UX FRONT END
+>>>>
+>>>>
+>>>>
+>>>> *REVOLVE*
+>>>> 12889 Moore St.
+>>>> CERRITOS, CA 90703
+>>>> www.revolve.com
+>>>> @REVOLVE | @REVOLVEman
+>>>>
+>>>
+>>>
+>>> --
+>>>
+>>> *OOO - 3/28*
+>>>
+>>> *Delayed Response - 4/1 to 4/5*
+>>>
+>>> *Leah Firestone*
+>>>
+>>> Enterprise Client Success Manager
+>>>
+>>> e: lfirestone@yotpo.com
+>>>
+>>>
+>>> <http://events.yotpo.com/retain-forward-fall2023?utm_source=3Demployees=
+&utm_medium=3Dsocial&utm_campaign=3DGlobal_Events_Virtualevent_RetainForwar=
+dH2_November2023&utm_term=3DLeahFirestone>
+>>>
+>>>
+>>>
+>>>
+>>
+>> --
+>>
+>> Grace Hong
+>>
+>> *VP of Product + Design*
+>>
+>> REVOLVE
+>>
+>> @REVOLVE I www.REVOLVE.com <http://www.revolve.com/>
+>>
+>> *@FWRD *I *www.FWRD.com* <http://www.revolveclothing.com/>
+>>
+>> 12889 Moore St.
+>>
+>> Cerritos, CA 90703
+>>
+>>
+>> <https://www.instagram.com/REVOLVE/>   <http://www.revolve.com/>
+>>
+>
+>
+> --
+>
+> *OOO - 3/28*
+>
+> *Delayed Response - 4/1 to 4/5*
+>
+> *Leah Firestone*
+>
+> Enterprise Client Success Manager
+>
+> e: lfirestone@yotpo.com
+>
+>
+> <http://events.yotpo.com/retain-forward-fall2023?utm_source=3Demployees&u=
+tm_medium=3Dsocial&utm_campaign=3DGlobal_Events_Virtualevent_RetainForwardH=
+2_November2023&utm_term=3DLeahFirestone>
+>
+>
+>
+>
+
+--=20
+*ANDREW LIU*
+UX FRONT END
+
+
+
+*REVOLVE*
+12889 Moore St.
+CERRITOS, CA 90703
+www.revolve.com
+@REVOLVE | @REVOLVEman
+
+--0000000000007d62260615614a20
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi Leah,<div><br></div><div>We appreciate the quick turnar=
+ound!</div><div><br></div><div>All the possible UI looks good, but just som=
+e comments/questions:</div><div><br></div><div><b>PDP Widget (widget-mockup=
+_feedback.png)</b></div><div>1. Could we have the &quot;Would you recommend=
+ this item? Yes&quot; to be kept on one line so it doesn&#39;t break? Also,=
+ there&#39;s too much of a gap between the label and answer.</div><div>2.=
+=C2=A0if the info of the label/answer needs to be stacked, can we have it s=
+imilar to GF collective?</div><div><img src=3D"cid:ii_lun8ubxx0" alt=3D"ima=
+ge.png" width=3D"192" height=3D"82"><br></div><div>3.=C2=A0for the slider, =
+can we have it updated with rounded edges? is this optional for us to turn =
+on/off?</div><div><img src=3D"cid:ii_lun8uyek1" alt=3D"image.png" width=3D"=
+286" height=3D"97"><br></div><div>4.=C2=A0for the Write a Review button, wo=
+uld it be possible to have a similar pill button style like this one? So we=
+ main focus will=C2=A0be the content in the module.</div><div><img src=3D"c=
+id:ii_lun8yp9j2" alt=3D"image.png" width=3D"312" height=3D"188" style=3D"ma=
+rgin-right: 0px;"><br></div><div><br></div><div><b>PDP Widget Modal Review =
+Form (widget-mockup_feedback (write a review form).png)</b></div><div>1. Is=
+ it possible to have thumbnail=C2=A0+ product details next to the star rati=
+ngs (like email landing page)?</div><div><br></div><div><b>Email Landing Pa=
+ge (landing-page_mockup feedback.png)</b></div><div>1. Can we use the same =
+UI as the PDP Widget Modal in terms of using=C2=A0push buttons? The <i>poss=
+ible look mock</i> has radio buttons.</div><div>2. This template has the th=
+umbnail and product description next to the stars, can this be used in the =
+PDP Widget Modal? (question #1 in=C2=A0<b>PDP Widget Modal Review Form)</b>=
+</div><div><br></div><div><b>Email Landing Page Submission (landing-page_mo=
+ckup feedback (success submission).png)</b></div><div>This looks good!</div=
+><div><br></div><div>Will we be sending <i>possible look</i> files for the =
+other mocks?</div><div><br></div><div>Thanks!</div></div><br><div class=3D"=
+gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Apr 5, 2024 at 7=
+:35=E2=80=AFAM Leah Firestone &lt;<a href=3D"mailto:lfirestone@yotpo.com">l=
+firestone@yotpo.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex"><div dir=3D"ltr">Hi Grace and Andrew,=C2=A0<div><br></di=
+v><div>Happy Friday! Thank you both for your time and transparency yesterda=
+y! Please find attached the mock-ups that are as close as possible to your =
+designs.=C2=A0</div><div><br></div><div>Looking forward to hearing your fee=
+dback on Monday.=C2=A0</div><div><br></div><div>Have a great weekend!=C2=A0=
+</div><div>Leah</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Wed, Apr 3, 2024 at 6:42=E2=80=AFPM Grace Hong &lt;=
+<a href=3D"mailto:grace.hong@revolve.com" target=3D"_blank">grace.hong@revo=
+lve.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex"><div dir=3D"ltr">Thursday, April 4th -=C2=A0 12:00pmPT to 12:30pmPT =
+works!</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_=
+attr">On Wed, Apr 3, 2024 at 6:16=E2=80=AFAM Leah Firestone &lt;<a href=3D"=
+mailto:lfirestone@yotpo.com" target=3D"_blank">lfirestone@yotpo.com</a>&gt;=
+ wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=
+=3D"ltr"><div>Hi Andrew and Grace,=C2=A0</div><div><br></div><div>Please se=
+e answers inline below. Great news=C2=A0=F0=9F=8E=89=C2=A0I was able to set=
+ up time with the customizations team! Do any of the following times work f=
+or you?=C2=A0</div><div><br></div><div>Thursday, April 4th - 10:00amPT, 12:=
+00pmPT or 12:30pmPT</div><div><br></div><div>Thanks,</div><div>Leah</div><b=
+r><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, =
+Apr 2, 2024 at 2:35=E2=80=AFPM Andrew Liu &lt;<a href=3D"mailto:andrew.liu@=
+revolve.com" target=3D"_blank">andrew.liu@revolve.com</a>&gt; wrote:<br></d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
+er-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hi Le=
+ah,<div><br></div><div>Thanks for=C2=A0the update. A few comments:</div><di=
+v><br></div><div>1. For the T+C, this is coming from the &quot;Write a Revi=
+ew&quot; modal in the on-site review widget=C2=A0<a href=3D"https://yap.yot=
+po.com/preview-wadmin/?guid=3DtlHZAkJrpHB5lVdPMjKXm4pFbRB28UeILILjcN01&amp;=
+widget_instance_id=3D627196&amp;is-mobile=3Dfalse&amp;&amp;mode-preview=3Dt=
+rue" target=3D"_blank">https://yap.yotpo.com/preview-wadmin/?guid=3DtlHZAkJ=
+rpHB5lVdPMjKXm4pFbRB28UeILILjcN01&amp;widget_instance_id=3D627196&amp;is-mo=
+bile=3Dfalse&amp;&amp;mode-preview=3Dtrue</a>=C2=A0<font color=3D"#9900ff">=
+Thank you! We can add your hyperlink there, otherwise it is static text ref=
+erencing the site&#39;s Terms &amp; Conditions.=C2=A0</font></div><div>2. C=
+an we go over this flow? Would like to see what this one looks like. <font =
+color=3D"#9900ff">Please see attached. We can also customize this for Revol=
+ve.=C2=A0</font></div><div>3. We&#39;re not trying to hide it entirely, we&=
+#39;d like it to be &quot;optional&quot;, and if have anonymous if customer=
+ doesn&#39;t have a name. Is this something typical? or what do you suggest=
+ as best practices? <font color=3D"#9900ff">As a best practice we reccomend=
+ displaying the name as it boost credibilty.=C2=A0</font></div><div><br></d=
+iv><div>Also, just FYI, I added 2 more screenshots to the excalidraw whiteb=
+oard related to the <a href=3D"https://excalidraw.com/#json=3DSMkLn7KdXUA11=
+F36Ohk31,FYi4cohPW8Buc3c0lOgPWA" target=3D"_blank">AI Review Summary and St=
+ar Ratings</a></div><div><br></div><div>Thanks!</div></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Apr 2, 2024 =
+at 5:51=E2=80=AFAM Leah Firestone &lt;<a href=3D"mailto:lfirestone@yotpo.co=
+m" target=3D"_blank">lfirestone@yotpo.com</a>&gt; wrote:<br></div><blockquo=
+te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px =
+solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr">=
+Hi Revolve Team,=C2=A0<div><br></div><div>Thank you for your time today.=C2=
+=A0<a class=3D"gmail_plusreply" id=3D"m_241931344563109896m_-73032824592272=
+27486m_-3086301696843837038m_7331625510389215577m_-9138406656333514654m_295=
+0065205702800894m_2571462065405371907m_-204881691297023812gmail-plusReplyCh=
+ip-5" href=3D"mailto:andrew.liu@revolve.com" target=3D"_blank">@Andrew Liu<=
+/a>=C2=A0answers are inline below and I&#39;ve listed our action items from=
+ today. Please let me know how we can be of further support.=C2=A0</div><di=
+v><br></div><div><b>Revolve=C2=A0</b></div><div><ul><li>Finalize Wireframes=
+ - including any changes you&#39;d like to make to the Star widget=C2=A0</l=
+i></ul></div></div><b>Yotpo</b><div><ul><li>Coordinate=C2=A0call with custo=
+mizations team=C2=A0</li></ul><div><b>Summary - Employee Reviews</b>=C2=A0<=
+/div></div><div><span id=3D"m_241931344563109896m_-7303282459227227486m_-30=
+86301696843837038m_7331625510389215577m_-9138406656333514654m_2950065205702=
+800894m_2571462065405371907gmail-docs-internal-guid-ec1d4b26-7fff-d024-739d=
+-6c2d34e6dd08"><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;marg=
+in-bottom:0pt"><span style=3D"background-color:transparent;font-variant-num=
+eric:normal;font-variant-east-asian:normal;font-variant-alternates:normal;f=
+ont-size:11pt;font-family:Arial,sans-serif;color:rgb(0,0,0);vertical-align:=
+baseline">Revolve will build on top of the existing logic and infrastructur=
+e that receives reviews and validates their requirement for a review to be =
+submitted before an employee can place another order. Revolve will send the=
+ review content to Yotpo via the </span><a href=3D"https://apidocs.yotpo.co=
+m/reference/create-review" style=3D"text-decoration-line:none" target=3D"_b=
+lank"><span style=3D"font-size:11pt;font-family:Arial,sans-serif;background=
+-color:transparent;font-variant-numeric:normal;font-variant-east-asian:norm=
+al;font-variant-alternates:normal;text-decoration-line:underline;vertical-a=
+lign:baseline">create review endpoint</span></a><span style=3D"background-c=
+olor:transparent;font-variant-numeric:normal;font-variant-east-asian:normal=
+;font-variant-alternates:normal;font-size:11pt;font-family:Arial,sans-serif=
+;color:rgb(0,0,0);vertical-align:baseline"> with the order metadata that wi=
+ll state the review was left by an employee.=C2=A0</span><br></p><br><p dir=
+=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span =
+style=3D"font-size:11pt;font-family:Arial,sans-serif;color:rgb(0,0,0);backg=
+round-color:transparent;font-variant-numeric:normal;font-variant-east-asian=
+:normal;font-variant-alternates:normal;vertical-align:baseline"><a class=3D=
+"gmail_plusreply" id=3D"m_241931344563109896m_-7303282459227227486m_-308630=
+1696843837038m_7331625510389215577m_-9138406656333514654m_29500652057028008=
+94m_2571462065405371907plusReplyChip-0" href=3D"mailto:davit.osipyan@revolv=
+eclothing.com" target=3D"_blank">@Davit Osipyan</a>=C2=A0I recommend that y=
+ou use our </span><a href=3D"https://support.yotpo.com/docs/implementing-tr=
+usted-vendors#creating-verified-reviews-by-api-endpoint" style=3D"text-deco=
+ration-line:none" target=3D"_blank"><span style=3D"font-size:11pt;font-fami=
+ly:Arial,sans-serif;background-color:transparent;font-variant-numeric:norma=
+l;font-variant-east-asian:normal;font-variant-alternates:normal;text-decora=
+tion-line:underline;vertical-align:baseline">trusted vendor params</span></=
+a><span style=3D"font-size:11pt;font-family:Arial,sans-serif;color:rgb(0,0,=
+0);background-color:transparent;font-variant-numeric:normal;font-variant-ea=
+st-asian:normal;font-variant-alternates:normal;vertical-align:baseline"> wh=
+ich will allow the review to be marked with a verified buyer badge. Using t=
+he data from the other params on the call you will </span><a href=3D"https:=
+//support.yotpo.com/v1/docs/implementing-trusted-vendors#signing-reviewer-d=
+ata" style=3D"text-decoration-line:none" target=3D"_blank"><span style=3D"f=
+ont-size:11pt;font-family:Arial,sans-serif;background-color:transparent;fon=
+t-variant-numeric:normal;font-variant-east-asian:normal;font-variant-altern=
+ates:normal;text-decoration-line:underline;vertical-align:baseline">generat=
+e a SHA 256 signature</span></a><span style=3D"font-size:11pt;font-family:A=
+rial,sans-serif;color:rgb(0,0,0);background-color:transparent;font-variant-=
+numeric:normal;font-variant-east-asian:normal;font-variant-alternates:norma=
+l;vertical-align:baseline"> to pass into the signature param.</span></p><sp=
+an id=3D"m_241931344563109896m_-7303282459227227486m_-3086301696843837038m_=
+7331625510389215577m_-9138406656333514654m_2950065205702800894m_25714620654=
+05371907gmail-docs-internal-guid-33963b4f-7fff-7769-24af-262ae8aa9af1"><spa=
+n style=3D"font-size:11pt;font-family:Arial,sans-serif;color:rgb(0,0,0);bac=
+kground-color:transparent;font-variant-numeric:normal;font-variant-east-asi=
+an:normal;font-variant-alternates:normal;vertical-align:baseline"><span sty=
+le=3D"border:none;display:inline-block;overflow:hidden;width:624px;height:5=
+13px"><img src=3D"https://lh7-us.googleusercontent.com/_7VrYrb-F9KEn5MFZvjc=
+FHMaO1yy2dZzL5H-rBvztN8xs3USyOMIZ7AL8ZBeFIDTkwRNToDBCDkF9LgnGjC9vE0rPXmY5bk=
+15DFuqnlN-xKSqQLUaWCzuql_cwXx6_Xg3P5UjyQ7bqTmQa1TLKMh2fk" width=3D"624" hei=
+ght=3D"513" style=3D"margin-left: 0px; margin-top: 0px;"></span></span></sp=
+an><br></span></div><div>Summary=C2=A0<br><div class=3D"gmail_quote"><div d=
+ir=3D"ltr" class=3D"gmail_attr">On Fri, Mar 29, 2024 at 9:28=E2=80=AFPM And=
+rew Liu &lt;<a href=3D"mailto:andrew.liu@revolve.com" target=3D"_blank">and=
+rew.liu@revolve.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex"><div dir=3D"ltr">Hi Leah &amp; Katie,<div><br></div><div=
+>Just wanted to follow up with a <a href=3D"https://excalidraw.com/#json=3D=
+tGNako9_yIZJiAlwYbV-e,aEPg49OXa_JPdpx9Lewygg" target=3D"_blank">link to a w=
+hiteboard with yotpo design </a>to showcase what we&#39;d like for our impl=
+ementation. We matched it as close as possible to your=C2=A0design while re=
+taining our branding.=C2=A0</div><div><br></div><div>A couple of questions =
+for discussion on Monday regarding some fields in the reviews modal:</div><=
+div>1. There&#39; a terms and condition agreement at the bottom. Does this =
+link to yotpo&#39;s=C2=A0t+c or are we supposed to link it to ours? <font c=
+olor=3D"#9900ff">I sent myself a test email and didn&#39;t see it, could yo=
+u please share a screenshot of the link you&#39;re referring to.=C2=A0</fon=
+t></div><div>2. The=C2=A0required email address, does yotpo have a=C2=A0flo=
+w for this? <font color=3D"#9900ff">Yes, a flow is trigger via Yotpo.=C2=A0=
+</font></div><div>3. The required display name, is it possible to make this=
+ optional? <font color=3D"#9900ff">Revolve can hide the name=C2=A0<a href=
+=3D"https://support.yotpo.com/docs/hiding-the-username-in-the-reviews-widge=
+t" target=3D"_blank">CSS edits</a>.=C2=A0</font></div><div><br></div><div>T=
+hanks</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"g=
+mail_attr">On Fri, Mar 29, 2024 at 2:43=E2=80=AFPM Grace Hong &lt;<a href=
+=3D"mailto:grace.hong@revolve.com" target=3D"_blank">grace.hong@revolve.com=
+</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">=
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Leah,=C2=A0<div>Some comments below pr=
+eceding our TB on Monday.=C2=A0</div><div><br></div><div>=E2=80=A2 Widgets =
+/ Emails =E2=80=94 It&#39;s not clear to me the difference between an &quot=
+;edit&quot; vs a &quot;new email / widget wireframe&quot;. Our team is work=
+ing=C2=A0through the design again to match at least the content structure m=
+ore closely of what yotpo put together, but the initial preview that was pr=
+ovided is not anywhere close to what we would=C2=A0productionize, so I&#39;=
+m a bit confused. Let&#39;s discuss on Monday.</div><div><br></div><div>=E2=
+=80=A2 Employee Reviews =E2=80=94 Discussed with Davit and we&#39;d like to=
+ keep our employee review flow in-house , and just pass them to you guys (s=
+imilar to this initial feed set up), to display on the site</div><div><br><=
+/div><div>=E2=80=A2 Syndication =E2=80=94 I will need to work on this, but =
+not a blocker for launch.</div><div><br></div><div><br></div></div><br><div=
+ class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 25=
+, 2024 at 1:04=E2=80=AFPM Leah Firestone &lt;<a href=3D"mailto:lfirestone@y=
+otpo.com" target=3D"_blank">lfirestone@yotpo.com</a>&gt; wrote:<br></div><b=
+lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
+ft:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hi Revolve=
+ Team,=C2=A0<div><br></div><div>Thank you for your time today! Please=C2=A0=
+find below a summary of our meeting and action items are listed on the <a h=
+ref=3D"https://yotpoent.monday.com/boards/5907406428/pulses/6252660510" tar=
+get=3D"_blank">Monday=C2=A0Board</a>.=C2=A0</div><div><b>Summary</b></div><=
+div><ul><li>Widgets/Emails - Three options available=C2=A0for next steps,=
+=C2=A0<a class=3D"gmail_plusreply" id=3D"m_241931344563109896m_-73032824592=
+27227486m_-3086301696843837038m_7331625510389215577m_-9138406656333514654m_=
+2950065205702800894m_2571462065405371907m_-204881691297023812m_895099419899=
+8832301m_-2994423068934311828m_2871114196714884480m_8119028228530438157m_-8=
+293328294049880099m_-6590702247348608659m_7171469666732838604plusReplyChip-=
+0" href=3D"mailto:grace.hong@revolve.com" target=3D"_blank">@Grace Hong</a>=
+=C2=A0please let me know which options you&#39;d like to move forward with.=
+ We&#39;re happy to support whatever is a best fit for your team=C2=A0=E2=
+=98=BA=EF=B8=8F</li><ul><li>Provide one round of edits to current widget an=
+d email design that was implemented=C2=A0by Yotpo</li><li>Implement New Ema=
+il and Widget Wireframes=C2=A0(sent 3/22)=C2=A0</li><ul><li>Yotpo Team prov=
+ides feedback and will mock up what can be done Out of the Box, what would =
+require CSS edits, and what would require the development of a custom widge=
+t (3 Day SLA)</li><li>Yotpo Team implements design=C2=A0(5-7 Day SLA)</li><=
+li>This will most likely impact our launch timeline of early April=C2=A0</l=
+i></ul><li>Custom Development of Widget=C2=A0</li><ul><li>Based on wirefram=
+e feedback, Revolve Team would develop their own custom front end widget=C2=
+=A0</li></ul></ul><li>Employee Reviews=C2=A0=C2=A0</li><ul><li>Due to Yotpo=
+ internal checks on reviews=C2=A0(ie - profanity) it takes several hours fo=
+r reviews to be processed=C2=A0before they&#39;ll be seen in moderation or =
+on the widget</li><li>Revolve will investigate an alternative to the curren=
+t employee review page</li><li>Revolve to discuss internally the importance=
+ of having this custom feature built for launch=C2=A0</li></ul><li>Syndicat=
+ion=C2=A0</li><ul><li>Revolve to discuss internally the process to share a =
+&#39;Revolve ID&#39; with external brands=C2=A0</li></ul></ul><div>Please l=
+et us know how we can be of further support.=C2=A0</div></div><div><br></di=
+v><div>Thanks,</div><div>Leah</div><div><br clear=3D"all"><div><br></div><s=
+pan class=3D"gmail_signature_prefix">-- </span><br><div dir=3D"ltr" class=
+=3D"gmail_signature"><div dir=3D"ltr"><span><p style=3D"line-height:1.38;ma=
+rgin-top:0pt;margin-bottom:0pt"><b style=3D"font-size:14.6667px;color:rgb(0=
+,0,0);font-family:arial,sans-serif">Leah Firestone</b><br></p><p style=3D"l=
+ine-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-size:=
+12.6667px;color:rgb(0,0,0);font-family:arial,sans-serif">Enterprise Client =
+Success Manager </span></p><p style=3D"line-height:1.38;margin-top:0pt;marg=
+in-bottom:0pt"><span style=3D"color:rgb(0,0,0);font-family:arial,sans-serif=
+;font-size:13.3333px">e: </span><a href=3D"mailto:lfirestone@yotpo.com" sty=
+le=3D"font-family:arial,sans-serif;font-size:13.3333px" target=3D"_blank">l=
+firestone@yotpo.com</a></p></span><span><div><a href=3D"http://events.yotpo=
+.com/retain-forward-fall2023?utm_source=3Demployees&amp;utm_medium=3Dsocial=
+&amp;utm_campaign=3DGlobal_Events_Virtualevent_RetainForwardH2_November2023=
+&amp;utm_term=3DLeahFirestone" target=3D"_blank"><img width=3D"200" height=
+=3D"66" src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4yNoIhUlgETU=
+Ko4RpCQalNfiQ7BRDT68IlHoJBPG3z-KFD0ttaOPlL4A1zyHqyFz_V_aQ7CrJk"><br></a></d=
+iv><div><span><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margi=
+n-bottom:0pt"><br></p></span></div></span><br style=3D"color:rgb(0,0,0)"></=
+div></div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div><span class=3D"gmail_si=
+gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
+iv dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr" style=3D"font-size:12.8px"=
+></div><div dir=3D"ltr" style=3D"font-size:12.8px"><table style=3D"color:rg=
+b(34,34,34);font-size:small;border:none;border-collapse:collapse"><tbody><t=
+r style=3D"height:108.75pt"><td style=3D"border-width:1pt 0.5pt 1pt 1pt;bor=
+der-style:solid;border-color:rgb(255,255,255) rgb(183,183,183) rgb(255,255,=
+255) rgb(255,255,255);vertical-align:top;padding:5pt;overflow:hidden"><font=
+ color=3D"#000000"><span style=3D"border:none;display:inline-block;overflow=
+:hidden;width:69px;height:80px"><img src=3D"https://lh3.googleusercontent.c=
+om/QgpFyXcRKn8Ai5pJDtOvE5VFC5nEMvGGo_JO-kNOdLCcIMTINdkBeiByhcbxsxPwyUCGryNV=
+Yr0p7JVu1pen9mnCZiQOPcfeikz-nilLmCPlRiJH1xYN95DL-aWv1Hzj9Nuj_U8h" width=3D"=
+69" height=3D"80" style=3D"margin-left: 0px; margin-top: 0px;"></span><br><=
+/font></td><td style=3D"border-width:1pt 1pt 1pt 0.5pt;border-style:solid;b=
+order-color:rgb(255,255,255) rgb(255,255,255) rgb(255,255,255) rgb(183,183,=
+183);vertical-align:top;padding:5pt;overflow:hidden"><p dir=3D"ltr" style=
+=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-=
+size:10pt;font-family:&quot;Century Gothic&quot;,sans-serif;background-colo=
+r:transparent;vertical-align:baseline;white-space:pre-wrap"><font color=3D"=
+#000000">Grace Hong</font></span></p><p dir=3D"ltr" style=3D"line-height:1.=
+38;margin-top:0pt;margin-bottom:0pt"><font color=3D"#000000"><i style=3D"fo=
+nt-family:&quot;Century Gothic&quot;,sans-serif;font-size:12px;white-space:=
+pre-wrap">VP of Product + Design</i><br></font></p><font color=3D"#000000">=
+<br></font><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-b=
+ottom:0pt"><span style=3D"font-size:8pt;font-family:&quot;Proxima Nova&quot=
+;,sans-serif;background-color:transparent;font-weight:700;vertical-align:ba=
+seline;white-space:pre-wrap"><font color=3D"#000000">REVOLVE </font></span>=
+</p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0=
+pt"><font color=3D"#000000"><span style=3D"font-size:7pt;font-family:&quot;=
+Proxima Nova&quot;,sans-serif;background-color:transparent;font-weight:700;=
+vertical-align:baseline;white-space:pre-wrap">@REVOLVE I </span><a href=3D"=
+http://www.revolve.com/" style=3D"color:rgb(17,85,204)" target=3D"_blank"><=
+span style=3D"font-size:7pt;font-family:&quot;Proxima Nova&quot;,sans-serif=
+;background-color:transparent;font-weight:700;vertical-align:baseline;white=
+-space:pre-wrap">www.REVOLVE.com</span></a></font></p><p dir=3D"ltr" style=
+=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><font color=3D"#0000=
+00"><span style=3D"background-color:transparent;vertical-align:baseline;whi=
+te-space:pre-wrap"><b><font size=3D"1"><font face=3D"arial, sans-serif">@FW=
+RD </font></font></b></span>I<span style=3D"background-color:transparent;ve=
+rtical-align:baseline;white-space:pre-wrap"><b><font size=3D"1"><font face=
+=3D"Century Gothic, sans-serif"> </font></font></b></span><a href=3D"http:/=
+/www.revolveclothing.com/" style=3D"color:rgb(17,85,204);font-family:arial,=
+helvetica,sans-serif;font-size:x-small" target=3D"_blank"><b>www.FWRD.com</=
+b></a></font></p><font color=3D"#000000"><span style=3D"font-family:arial,h=
+elvetica,sans-serif;font-size:x-small"></span></font><p dir=3D"ltr" style=
+=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-=
+size:6pt;font-family:&quot;Century Gothic&quot;,sans-serif;background-color=
+:transparent;vertical-align:baseline;white-space:pre-wrap"><font color=3D"#=
+000000">12889 Moore St.</font></span></p><p dir=3D"ltr" style=3D"line-heigh=
+t:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-size:6pt;font-=
+family:&quot;Century Gothic&quot;,sans-serif;background-color:transparent;v=
+ertical-align:baseline;white-space:pre-wrap"><font color=3D"#000000">Cerrit=
+os, CA 90703</font></span></p><p dir=3D"ltr" style=3D"line-height:1.38;marg=
+in-top:0pt;margin-bottom:0pt"><font color=3D"#000000"><br></font></p><p dir=
+=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><font =
+color=3D"#000000"><a href=3D"https://www.instagram.com/REVOLVE/" style=3D"c=
+olor:rgb(17,85,204)" target=3D"_blank"><span style=3D"font-size:6pt;font-fa=
+mily:&quot;Century Gothic&quot;,sans-serif;background-color:transparent;ver=
+tical-align:baseline;white-space:pre-wrap"><span style=3D"border:none;displ=
+ay:inline-block;overflow:hidden;width:20px;height:20px"><img src=3D"https:/=
+/lh6.googleusercontent.com/hvFn2ntZDo6y1w_0FpF2pSC8crBJSvpRJ1iHQTO5O1bKd0_I=
+qCgJvmvfVuSPHwpfqLaHI5iZEVRIz-Atb9CJO7RmY9946z-XqPmH6iyzfBCUT4BibpDmFlKyE3a=
+7CCFYvuIpXWni" width=3D"20" height=3D"20" style=3D"margin-left: 0px; margin=
+-top: 0px;"></span></span></a><span style=3D"font-size:6pt;font-family:&quo=
+t;Century Gothic&quot;,sans-serif;background-color:transparent;vertical-ali=
+gn:baseline;white-space:pre-wrap"> =C2=A0 </span><a href=3D"http://www.revo=
+lve.com/" style=3D"color:rgb(17,85,204)" target=3D"_blank"><span style=3D"f=
+ont-size:6pt;font-family:&quot;Century Gothic&quot;,sans-serif;background-c=
+olor:transparent;vertical-align:baseline;white-space:pre-wrap"><span style=
+=3D"border:none;display:inline-block;overflow:hidden;width:15px;height:19px=
+"><img src=3D"https://lh5.googleusercontent.com/9_Wk8p-2sQ2Qvf16SkP2FpiHhg-=
+S0uSKdmsi0inFjiDF-Fc4fWRRGtUOk9WR1m3Yy4dlHEks_6DU0L1aOL38-SeHqm0t2hyXFB29fk=
+98EZeWQ6CaNOwGTq488x0ZbScz8_W5Yxw6" width=3D"15" height=3D"19" style=3D"mar=
+gin-left: 0px; margin-top: 0px;"></span></span></a><span style=3D"font-size=
+:6pt;font-family:&quot;Century Gothic&quot;,sans-serif;background-color:tra=
+nsparent;vertical-align:baseline;white-space:pre-wrap">=C2=A0=C2=A0=C2=A0</=
+span></font></p></td></tr></tbody></table></div></div></div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div><span class=3D"gmail_si=
+gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
+iv dir=3D"ltr"><div dir=3D"ltr"><div><span style=3D"color:rgb(0,0,0)"><font=
+ face=3D"arial black, sans-serif" size=3D"2"><b>ANDREW LIU</b></font></span=
+></div><div><span style=3D"font-size:x-small;color:rgb(0,0,0);font-family:a=
+rial,helvetica,sans-serif">UX FRONT END</span></div><div style=3D"font-size=
+:13px"><p dir=3D"ltr" style=3D"color:rgb(34,34,34);font-size:small;line-hei=
+ght:1.38;margin-top:0pt;margin-bottom:0pt"><br></p></div><div style=3D"font=
+-size:13px"><div style=3D"color:rgb(136,136,136)"><div><font face=3D"arial,=
+ helvetica, sans-serif" size=3D"1"><b><font color=3D"#000000">R</font><font=
+ color=3D"#000000">E</font><font color=3D"#000000">V</font><font color=3D"#=
+000000">O</font><font color=3D"#000000">L</font><font color=3D"#000000">V</=
+font><font color=3D"#000000">E<br></font></b></font></div><div><div><span s=
+tyle=3D"color:rgb(0,0,0);font-family:arial,helvetica,sans-serif;font-size:x=
+-small">12889 Moore St.</span></div><div><span style=3D"color:rgb(0,0,0);fo=
+nt-family:arial,helvetica,sans-serif;font-size:x-small">CERRITOS, CA 90703<=
+/span><br></div></div><div><font color=3D"#000000" face=3D"arial, helvetica=
+, sans-serif" size=3D"1"><a href=3D"http://www.revolve.com/" style=3D"color=
+:rgb(17,85,204)" target=3D"_blank">www.revolve.com</a></font></div></div><d=
+iv style=3D"color:rgb(136,136,136)"><span style=3D"font-size:x-small;font-f=
+amily:arial,helvetica,sans-serif">@REVOLVE | @REVOLVEman<br></span></div></=
+div></div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div><span class=3D"gmail_si=
+gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
+iv dir=3D"ltr"><span><p style=3D"line-height:1.38;margin-top:0pt;margin-bot=
+tom:0pt"><b style=3D"font-size:14.6667px;font-family:arial,sans-serif"><fon=
+t color=3D"#9900ff">OOO - 3/28</font></b></p><p style=3D"line-height:1.38;m=
+argin-top:0pt;margin-bottom:0pt"><b style=3D"font-size:14.6667px;font-famil=
+y:arial,sans-serif"><font color=3D"#9900ff">Delayed Response - 4/1 to 4/5</=
+font></b><b style=3D"font-size:14.6667px;font-family:arial,sans-serif"><fon=
+t color=3D"#9900ff"><br></font></b></p><p style=3D"line-height:1.38;margin-=
+top:0pt;margin-bottom:0pt"><b style=3D"font-size:14.6667px;color:rgb(0,0,0)=
+;font-family:arial,sans-serif">Leah Firestone</b><br></p><p style=3D"line-h=
+eight:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-size:12.66=
+67px;color:rgb(0,0,0);font-family:arial,sans-serif">Enterprise Client Succe=
+ss Manager </span></p><p style=3D"line-height:1.38;margin-top:0pt;margin-bo=
+ttom:0pt"><span style=3D"color:rgb(0,0,0);font-family:arial,sans-serif;font=
+-size:13.3333px">e: </span><a href=3D"mailto:lfirestone@yotpo.com" style=3D=
+"font-family:arial,sans-serif;font-size:13.3333px" target=3D"_blank">lfires=
+tone@yotpo.com</a></p></span><span><div><a href=3D"http://events.yotpo.com/=
+retain-forward-fall2023?utm_source=3Demployees&amp;utm_medium=3Dsocial&amp;=
+utm_campaign=3DGlobal_Events_Virtualevent_RetainForwardH2_November2023&amp;=
+utm_term=3DLeahFirestone" target=3D"_blank"><img width=3D"200" height=3D"66=
+" src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4yNoIhUlgETUKo4RpC=
+QalNfiQ7BRDT68IlHoJBPG3z-KFD0ttaOPlL4A1zyHqyFz_V_aQ7CrJk"><br></a></div><di=
+v><span><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bott=
+om:0pt"><br></p></span></div></span><br style=3D"color:rgb(0,0,0)"></div></=
+div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div><span class=3D"gmail_si=
+gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
+iv dir=3D"ltr"><div dir=3D"ltr"><div><span style=3D"color:rgb(0,0,0)"><font=
+ face=3D"arial black, sans-serif" size=3D"2"><b>ANDREW LIU</b></font></span=
+></div><div><span style=3D"font-size:x-small;color:rgb(0,0,0);font-family:a=
+rial,helvetica,sans-serif">UX FRONT END</span></div><div style=3D"font-size=
+:13px"><p dir=3D"ltr" style=3D"color:rgb(34,34,34);font-size:small;line-hei=
+ght:1.38;margin-top:0pt;margin-bottom:0pt"><br></p></div><div style=3D"font=
+-size:13px"><div style=3D"color:rgb(136,136,136)"><div><font face=3D"arial,=
+ helvetica, sans-serif" size=3D"1"><b><font color=3D"#000000">R</font><font=
+ color=3D"#000000">E</font><font color=3D"#000000">V</font><font color=3D"#=
+000000">O</font><font color=3D"#000000">L</font><font color=3D"#000000">V</=
+font><font color=3D"#000000">E<br></font></b></font></div><div><div><span s=
+tyle=3D"color:rgb(0,0,0);font-family:arial,helvetica,sans-serif;font-size:x=
+-small">12889 Moore St.</span></div><div><span style=3D"color:rgb(0,0,0);fo=
+nt-family:arial,helvetica,sans-serif;font-size:x-small">CERRITOS, CA 90703<=
+/span><br></div></div><div><font color=3D"#000000" face=3D"arial, helvetica=
+, sans-serif" size=3D"1"><a href=3D"http://www.revolve.com/" style=3D"color=
+:rgb(17,85,204)" target=3D"_blank">www.revolve.com</a></font></div></div><d=
+iv style=3D"color:rgb(136,136,136)"><span style=3D"font-size:x-small;font-f=
+amily:arial,helvetica,sans-serif">@REVOLVE | @REVOLVEman<br></span></div></=
+div></div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div><span class=3D"gmail_si=
+gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
+iv dir=3D"ltr"><span><p style=3D"line-height:1.38;margin-top:0pt;margin-bot=
+tom:0pt"><b style=3D"font-size:14.6667px;font-family:arial,sans-serif"><fon=
+t color=3D"#9900ff">OOO - 3/28</font></b></p><p style=3D"line-height:1.38;m=
+argin-top:0pt;margin-bottom:0pt"><b style=3D"font-size:14.6667px;font-famil=
+y:arial,sans-serif"><font color=3D"#9900ff">Delayed Response - 4/1 to 4/5</=
+font></b><b style=3D"font-size:14.6667px;font-family:arial,sans-serif"><fon=
+t color=3D"#9900ff"><br></font></b></p><p style=3D"line-height:1.38;margin-=
+top:0pt;margin-bottom:0pt"><b style=3D"font-size:14.6667px;color:rgb(0,0,0)=
+;font-family:arial,sans-serif">Leah Firestone</b><br></p><p style=3D"line-h=
+eight:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-size:12.66=
+67px;color:rgb(0,0,0);font-family:arial,sans-serif">Enterprise Client Succe=
+ss Manager </span></p><p style=3D"line-height:1.38;margin-top:0pt;margin-bo=
+ttom:0pt"><span style=3D"color:rgb(0,0,0);font-family:arial,sans-serif;font=
+-size:13.3333px">e: </span><a href=3D"mailto:lfirestone@yotpo.com" style=3D=
+"font-family:arial,sans-serif;font-size:13.3333px" target=3D"_blank">lfires=
+tone@yotpo.com</a></p></span><span><div><a href=3D"http://events.yotpo.com/=
+retain-forward-fall2023?utm_source=3Demployees&amp;utm_medium=3Dsocial&amp;=
+utm_campaign=3DGlobal_Events_Virtualevent_RetainForwardH2_November2023&amp;=
+utm_term=3DLeahFirestone" target=3D"_blank"><img width=3D"200" height=3D"66=
+" src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4yNoIhUlgETUKo4RpC=
+QalNfiQ7BRDT68IlHoJBPG3z-KFD0ttaOPlL4A1zyHqyFz_V_aQ7CrJk"><br></a></div><di=
+v><span><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bott=
+om:0pt"><br></p></span></div></span><br style=3D"color:rgb(0,0,0)"></div></=
+div></div>
+</blockquote></div><br clear=3D"all"><div><br></div><span class=3D"gmail_si=
+gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
+iv dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr" style=3D"font-size:12.8px"=
+></div><div dir=3D"ltr" style=3D"font-size:12.8px"><table style=3D"color:rg=
+b(34,34,34);font-size:small;border:none;border-collapse:collapse"><tbody><t=
+r style=3D"height:108.75pt"><td style=3D"border-width:1pt 0.5pt 1pt 1pt;bor=
+der-style:solid;border-color:rgb(255,255,255) rgb(183,183,183) rgb(255,255,=
+255) rgb(255,255,255);vertical-align:top;padding:5pt;overflow:hidden"><font=
+ color=3D"#000000"><span style=3D"border:none;display:inline-block;overflow=
+:hidden;width:69px;height:80px"><img src=3D"https://lh3.googleusercontent.c=
+om/QgpFyXcRKn8Ai5pJDtOvE5VFC5nEMvGGo_JO-kNOdLCcIMTINdkBeiByhcbxsxPwyUCGryNV=
+Yr0p7JVu1pen9mnCZiQOPcfeikz-nilLmCPlRiJH1xYN95DL-aWv1Hzj9Nuj_U8h" width=3D"=
+69" height=3D"80" style=3D"margin-left: 0px; margin-top: 0px;"></span><br><=
+/font></td><td style=3D"border-width:1pt 1pt 1pt 0.5pt;border-style:solid;b=
+order-color:rgb(255,255,255) rgb(255,255,255) rgb(255,255,255) rgb(183,183,=
+183);vertical-align:top;padding:5pt;overflow:hidden"><p dir=3D"ltr" style=
+=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-=
+size:10pt;font-family:&quot;Century Gothic&quot;,sans-serif;background-colo=
+r:transparent;vertical-align:baseline;white-space:pre-wrap"><font color=3D"=
+#000000">Grace Hong</font></span></p><p dir=3D"ltr" style=3D"line-height:1.=
+38;margin-top:0pt;margin-bottom:0pt"><font color=3D"#000000"><i style=3D"fo=
+nt-family:&quot;Century Gothic&quot;,sans-serif;font-size:12px;white-space:=
+pre-wrap">VP of Product + Design</i><br></font></p><font color=3D"#000000">=
+<br></font><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-b=
+ottom:0pt"><span style=3D"font-size:8pt;font-family:&quot;Proxima Nova&quot=
+;,sans-serif;background-color:transparent;font-weight:700;vertical-align:ba=
+seline;white-space:pre-wrap"><font color=3D"#000000">REVOLVE </font></span>=
+</p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0=
+pt"><font color=3D"#000000"><span style=3D"font-size:7pt;font-family:&quot;=
+Proxima Nova&quot;,sans-serif;background-color:transparent;font-weight:700;=
+vertical-align:baseline;white-space:pre-wrap">@REVOLVE I </span><a href=3D"=
+http://www.revolve.com/" style=3D"color:rgb(17,85,204)" target=3D"_blank"><=
+span style=3D"font-size:7pt;font-family:&quot;Proxima Nova&quot;,sans-serif=
+;background-color:transparent;font-weight:700;vertical-align:baseline;white=
+-space:pre-wrap">www.REVOLVE.com</span></a></font></p><p dir=3D"ltr" style=
+=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><font color=3D"#0000=
+00"><span style=3D"background-color:transparent;vertical-align:baseline;whi=
+te-space:pre-wrap"><b><font size=3D"1"><font face=3D"arial, sans-serif">@FW=
+RD </font></font></b></span>I<span style=3D"background-color:transparent;ve=
+rtical-align:baseline;white-space:pre-wrap"><b><font size=3D"1"><font face=
+=3D"Century Gothic, sans-serif"> </font></font></b></span><a href=3D"http:/=
+/www.revolveclothing.com/" style=3D"color:rgb(17,85,204);font-family:arial,=
+helvetica,sans-serif;font-size:x-small" target=3D"_blank"><b>www.FWRD.com</=
+b></a></font></p><font color=3D"#000000"><span style=3D"font-family:arial,h=
+elvetica,sans-serif;font-size:x-small"></span></font><p dir=3D"ltr" style=
+=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-=
+size:6pt;font-family:&quot;Century Gothic&quot;,sans-serif;background-color=
+:transparent;vertical-align:baseline;white-space:pre-wrap"><font color=3D"#=
+000000">12889 Moore St.</font></span></p><p dir=3D"ltr" style=3D"line-heigh=
+t:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-size:6pt;font-=
+family:&quot;Century Gothic&quot;,sans-serif;background-color:transparent;v=
+ertical-align:baseline;white-space:pre-wrap"><font color=3D"#000000">Cerrit=
+os, CA 90703</font></span></p><p dir=3D"ltr" style=3D"line-height:1.38;marg=
+in-top:0pt;margin-bottom:0pt"><font color=3D"#000000"><br></font></p><p dir=
+=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><font =
+color=3D"#000000"><a href=3D"https://www.instagram.com/REVOLVE/" style=3D"c=
+olor:rgb(17,85,204)" target=3D"_blank"><span style=3D"font-size:6pt;font-fa=
+mily:&quot;Century Gothic&quot;,sans-serif;background-color:transparent;ver=
+tical-align:baseline;white-space:pre-wrap"><span style=3D"border:none;displ=
+ay:inline-block;overflow:hidden;width:20px;height:20px"><img src=3D"https:/=
+/lh6.googleusercontent.com/hvFn2ntZDo6y1w_0FpF2pSC8crBJSvpRJ1iHQTO5O1bKd0_I=
+qCgJvmvfVuSPHwpfqLaHI5iZEVRIz-Atb9CJO7RmY9946z-XqPmH6iyzfBCUT4BibpDmFlKyE3a=
+7CCFYvuIpXWni" width=3D"20" height=3D"20" style=3D"margin-left: 0px; margin=
+-top: 0px;"></span></span></a><span style=3D"font-size:6pt;font-family:&quo=
+t;Century Gothic&quot;,sans-serif;background-color:transparent;vertical-ali=
+gn:baseline;white-space:pre-wrap"> =C2=A0 </span><a href=3D"http://www.revo=
+lve.com/" style=3D"color:rgb(17,85,204)" target=3D"_blank"><span style=3D"f=
+ont-size:6pt;font-family:&quot;Century Gothic&quot;,sans-serif;background-c=
+olor:transparent;vertical-align:baseline;white-space:pre-wrap"><span style=
+=3D"border:none;display:inline-block;overflow:hidden;width:15px;height:19px=
+"><img src=3D"https://lh5.googleusercontent.com/9_Wk8p-2sQ2Qvf16SkP2FpiHhg-=
+S0uSKdmsi0inFjiDF-Fc4fWRRGtUOk9WR1m3Yy4dlHEks_6DU0L1aOL38-SeHqm0t2hyXFB29fk=
+98EZeWQ6CaNOwGTq488x0ZbScz8_W5Yxw6" width=3D"15" height=3D"19" style=3D"mar=
+gin-left: 0px; margin-top: 0px;"></span></span></a><span style=3D"font-size=
+:6pt;font-family:&quot;Century Gothic&quot;,sans-serif;background-color:tra=
+nsparent;vertical-align:baseline;white-space:pre-wrap">=C2=A0=C2=A0=C2=A0</=
+span></font></p></td></tr></tbody></table></div></div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div><span class=3D"gmail_si=
+gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
+iv dir=3D"ltr"><span><p style=3D"line-height:1.38;margin-top:0pt;margin-bot=
+tom:0pt"><b style=3D"font-size:14.6667px;font-family:arial,sans-serif"><fon=
+t color=3D"#9900ff">OOO - 3/28</font></b></p><p style=3D"line-height:1.38;m=
+argin-top:0pt;margin-bottom:0pt"><b style=3D"font-size:14.6667px;font-famil=
+y:arial,sans-serif"><font color=3D"#9900ff">Delayed Response - 4/1 to 4/5</=
+font></b><b style=3D"font-size:14.6667px;font-family:arial,sans-serif"><fon=
+t color=3D"#9900ff"><br></font></b></p><p style=3D"line-height:1.38;margin-=
+top:0pt;margin-bottom:0pt"><b style=3D"font-size:14.6667px;color:rgb(0,0,0)=
+;font-family:arial,sans-serif">Leah Firestone</b><br></p><p style=3D"line-h=
+eight:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-size:12.66=
+67px;color:rgb(0,0,0);font-family:arial,sans-serif">Enterprise Client Succe=
+ss Manager </span></p><p style=3D"line-height:1.38;margin-top:0pt;margin-bo=
+ttom:0pt"><span style=3D"color:rgb(0,0,0);font-family:arial,sans-serif;font=
+-size:13.3333px">e: </span><a href=3D"mailto:lfirestone@yotpo.com" style=3D=
+"font-family:arial,sans-serif;font-size:13.3333px" target=3D"_blank">lfires=
+tone@yotpo.com</a></p></span><span><div><a href=3D"http://events.yotpo.com/=
+retain-forward-fall2023?utm_source=3Demployees&amp;utm_medium=3Dsocial&amp;=
+utm_campaign=3DGlobal_Events_Virtualevent_RetainForwardH2_November2023&amp;=
+utm_term=3DLeahFirestone" target=3D"_blank"><img width=3D"200" height=3D"66=
+" src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4yNoIhUlgETUKo4RpC=
+QalNfiQ7BRDT68IlHoJBPG3z-KFD0ttaOPlL4A1zyHqyFz_V_aQ7CrJk"><br></a></div><di=
+v><span><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bott=
+om:0pt"><br></p></span></div></span><br style=3D"color:rgb(0,0,0)"></div></=
+div>
+</blockquote></div><br clear=3D"all"><div><br></div><span class=3D"gmail_si=
+gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
+iv dir=3D"ltr"><div dir=3D"ltr"><div><span style=3D"color:rgb(0,0,0)"><font=
+ face=3D"arial black, sans-serif" size=3D"2"><b>ANDREW LIU</b></font></span=
+></div><div><span style=3D"font-size:x-small;color:rgb(0,0,0);font-family:a=
+rial,helvetica,sans-serif">UX FRONT END</span></div><div style=3D"font-size=
+:13px"><p dir=3D"ltr" style=3D"color:rgb(34,34,34);font-size:small;line-hei=
+ght:1.38;margin-top:0pt;margin-bottom:0pt"><br></p></div><div style=3D"font=
+-size:13px"><div style=3D"color:rgb(136,136,136)"><div><font face=3D"arial,=
+ helvetica, sans-serif" size=3D"1"><b><font color=3D"#000000">R</font><font=
+ color=3D"#000000">E</font><font color=3D"#000000">V</font><font color=3D"#=
+000000">O</font><font color=3D"#000000">L</font><font color=3D"#000000">V</=
+font><font color=3D"#000000">E<br></font></b></font></div><div><div><span s=
+tyle=3D"color:rgb(0,0,0);font-family:arial,helvetica,sans-serif;font-size:x=
+-small">12889 Moore St.</span></div><div><span style=3D"color:rgb(0,0,0);fo=
+nt-family:arial,helvetica,sans-serif;font-size:x-small">CERRITOS, CA 90703<=
+/span><br></div></div><div><font color=3D"#000000" face=3D"arial, helvetica=
+, sans-serif" size=3D"1"><a href=3D"http://www.revolve.com/" style=3D"color=
+:rgb(17,85,204)" target=3D"_blank">www.revolve.com</a></font></div></div><d=
+iv style=3D"color:rgb(136,136,136)"><span style=3D"font-size:x-small;font-f=
+amily:arial,helvetica,sans-serif">@REVOLVE | @REVOLVEman<br></span></div></=
+div></div></div></div>
+
+--0000000000007d62260615614a20--
+--0000000000007d62270615614a21
+Content-Type: image/png; name="image.png"
+Content-Disposition: inline; filename="image.png"
+Content-Transfer-Encoding: base64
+Content-ID: <ii_lun8ubxx0>
+X-Attachment-Id: ii_lun8ubxx0
+
+iVBORw0KGgoAAAANSUhEUgAAAMAAAABSCAIAAACNEEwYAAAAAXNSR0IArs4c6QAAAERlWElmTU0A
+KgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAwKADAAQAAAAB
+AAAAUgAAAADm/U26AAAShUlEQVR4Ae3dc5QsyRIH4MVd27Zt27Zt+6xt2zhr27ZtvbVtG+97G+/m
+qVM9c2fudO3t291Zf8xEZUVmJX4ZEZUZkT3g33//PUC+cg/0tAcG6mnGnC/3wP96IAMo46CuHsgA
+qqv7cuYMoIyBunogA6iu7suZM4AyBurqgQygurovZ84AyhioqwcygOrqvpw5AyhjoK4e6B8B9Pvv
+v3/88cffffddXS3LmftJD1QDoDPOOGPA3tfoo49+2WWXdafy7777rkzzzTdfkfmGG24YccQRxxxz
+zOGGG27xxRf/888/TzzxRGyHHHJIka0e+tNPP33zzTf/+uuvegrJeaMHqgHQo48+qrgFF1xwgQUW
+MDyXXHJJd/r3sccewzb77LMXmXffffcffvhhzz33BKDbbrvtnXfeGX/88ffee+8VV1yxyNYz+qCD
+DppuuulWXXXVddZZB0bPO++82nJ22GEHeB3onwu4TzvttF9//bWWLaf8vwfsxtd/TTnllIp7+OGH
+r7vuOsR2221HCE099dTHH3/8zTffjDByr732GngNP/zwk0wyyTXXXEPSkFWYDeR7770XdQA+KeON
+N57bWWaZZcIJJ/zxxx8XWWQRo/7CCy8oJ12PP/743XffPdtss4000kiLLbaYwmW5+uqrxxhjjNNP
+Pz1KK/096aSTZpxxxi+++CLSn3zyyaGHHtrfEtv222+/2WabSfzjjz+eeuqpaaeddq+99irx5NvU
+AwMkqsfEN998Y8oaeLpmzjnnHGywwYzuxhtvLOWKK67YaaedEGedddYSSyyB2GOPPXr16jXVVFPh
+MdhSjjzySNok3v7+++9LGXjggS+88MJI+eyzz6RMM800r776Ki22/PLLux1llFE++OADImqsscba
+cMMNpWy++eb4CQ/0fffdV9uW3377TcXuueee4qNddtnliCOOKKagE4AiHdAHHXTQL7/8ssSWb6MH
+KgDQ7bffbtjSRQcp2pBLIVrmnntuxEsvvQQ0iPPPP5+Uuvfee3/++WcDM84445RG4vDDDw84xrw3
+fnJtsskm2ICJuPL01ltvBU3p66+/PmEWBAa67+uvv2Y2lcp0+8wzzww77LAdPioxlwBkegD0Qw89
+VGR74okntMtsmWmmmShij7bYYotnn302eOaaay6EOaMJCy20ELgvt9xyhGuxhJahKwDQgQceaAjX
+W289OoXlMMwww3z//fcIGsr31BBDDEFUGDm6jMrAudtuu+m+Bx98EL3yyisXu9JouSBs8MEH9/TO
+O+80BgiDoQS6DE2GyWKY0eki/Irl1NKAO+mkk9amSwHl//S+mDslAGGgxS644IKUV6Mo2dB98D32
+2GOrGzWaQEZNYz700EMR2DzVCoZXKqGViF5pDHpMhAVtqrF2KaMJJpjABEXMOuuszz//vOExI9ko
+ytfdq6yyymGHHaY3dbeUogX98ssvk1JkzIcffjjzzDND2LfffhuFYwPTO+64Y5555jnggANkNN39
+9dRgEDwkgds+XHDM+ikxWCz46quviLTQg55efvnlJR637LChhhoqpT/33HO0Ybxx6aWXXnTRRc2W
+9LRImB7Btuuuu2pX8VHL0B23vK+aFx9TxA/bU8b5558fbqKEs88+G2H4Tccll1ySIgshNOSQQ7KB
+PLLYkz6njZMU8/XMM88EQaYSGxlBgFFecGOc4I98+uijjwiqyA6LrCuFkFJMotBoHpUudaDd4qXp
+kVoRh74AADGucccdNz0N4o033rDcwHhP6aYEEZuqrW7qnJ4CdHoUjfWIBVaEYGJuBaJOcap/Uy8Y
+YJ9LUpg45uioo446+eSTe3rjjTfecsst5DmaPcGs9tJjjz3Weg87uliBtddeOzqawMBAJslCc4VJ
+nl704osvWnliQknByQxXyJprrun29ddfLxZYpBlMM8wwQ7JFGNSq5DuryINOKgwszARytKR9YNdL
+w1T/5JNPpphiCkqNlXPppZfKbumBEkdAJ6UJOmjrBVQ8ovWuCmygDjuFODEAxUd6mU39yy+/FBNr
+aR/PVJi/tY9KKaQXzehFpfTObkmOHXfc0ehSK8wa6hLQa5kBiFIj/4hJ6tg3QW2dL7roImYQuM87
+77w33XSTQkg+khLW999/f9a6FABiZS+88MISIckyRO27WiBlQG1IM7sdCGayZWiDTd/V017lMKGY
+fakQFhuhSDhFClMPEK0UWJvwsYlOnK1EVGBEN1d30K2x7FlntZVTRI/SgLK2TLiptatq2Zo3pe0A
+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
+--0000000000007d62270615614a21
+Content-Type: image/png; name="image.png"
+Content-Disposition: inline; filename="image.png"
+Content-Transfer-Encoding: base64
+Content-ID: <ii_lun8uyek1>
+X-Attachment-Id: ii_lun8uyek1
+
+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
+LwqLgy5SUs8AAAAASUVORK5CYII=
+--0000000000007d62270615614a21
+Content-Type: image/png; name="image.png"
+Content-Disposition: inline; filename="image.png"
+Content-Transfer-Encoding: base64
+Content-ID: <ii_lun8yp9j2>
+X-Attachment-Id: ii_lun8yp9j2
+
+iVBORw0KGgoAAAANSUhEUgAAAs8AAAGxCAIAAAAS0MzMAAABXmlDQ1BJQ0MgUHJvZmlsZQAAKJF1
+kcFLAlEQxj9twwihkE7RYem8hajHDm4eJIhYXJXq5LraWq32WFci6NIp6BCdyj8gungoOoSHoE6d
+okvQpf6AzhFClLzmabVaNI9hfnx8b5g3D/APGYzZEoByxXVSyVl5cWlZDjxDohPCOGCYVaZq2jxZ
+8F37o/UAn6j3U6JXI57MNUsnjbO1i7e9m3T9r78vhgvFqkn1gzJsMscFfAqxtukywdvEYw4NRXwg
+2OryseB8l5sdTzqVIL4lHjVLRoH4iVjJ9+hWD5ftmvk1g5g+WKxkdNGHcgIqdGQoZWSRRBQxZP/x
+xzr+BDbAsAUHq7BQgks3VVIYbBSJ51CBiWkoxBGEKWNiz7/352k7I8DMPuA/9TR9Fzg/ohHXPW0y
+Tk95BC5DzHCMn636WlJ1JRrpcpB+cfCa8xcOBHJA+47z9zrn7UNg4BW4WvgET8BjoQkPM24AAAA4
+ZVhJZk1NACoAAAAIAAGHaQAEAAAAAQAAABoAAAAAAAKgAgAEAAAAAQAAAs+gAwAEAAAAAQAAAbEA
+AAAAoktZfAAAQABJREFUeAHs3XncfdX4P/5fmidCKkpKiQYllRRpEhKSKEohUaJBpCIZIjQImRuo
+0ED1SfM8qhQRGtBcIkKKDFG/Z63Pd3+2fc653+e+73POfe77vM4f57HO2mtd67pea+11vda11t5n
+tkceeeT/yycIBIEgEASCQBAIAn1D4HF9kxzBQSAIBIEgEASCQBB4FIGwjYyDIBAEgkAQCAJBoL8I
+hG30F99IDwJBIAgEgSAQBMI2MgaCQBAIAkEgCASB/iIQttFffCM9CASBIBAEgkAQCNvIGAgCQSAI
+BIEgEAT6i0DYRn/xjfQgEASCQBAIAkEgbCNjIAgEgSAQBIJAEOgvAmEb/cU30oNAEAgCQSAIBIGw
+jYyBIBAEgkAQCAJBoL8IhG30F99IDwJBIAgEgSAQBMI2MgaCQBAIAkEgCASB/iIQttFffCM9CASB
+IBAEgkAQCNvIGAgCQSAIBIEgEAT6i0DYRn/xjfQgEASCQBAIAkEgbCNjIAgEgSAQBIJAEOgvAmEb
+/cU30oNAEAgCQSAIBIGwjYyBIBAEgkAQCAJBoL8IhG30F99IDwJBIAgEgSAQBMI2MgaCQBAIAkEg
+CASB/iIQttFffCM9CASBIBAEgkAQCNvIGAgCQSAIBIEgEAT6i0DYRn/xjfQgEASCQBAIAkEgbCNj
+IAgEgSAQBIJAEOgvAmEb/cU30oNAEAgCQSAIBIGwjYyBIBAEgkAQCAJBoL8IhG30F99IDwJBIAgE
+gSAQBMI2MgaCQBAIAkEgCASB/iIQttFffCM9CASBIBAEgkAQCNvIGAgCQSAIBIEgEAT6i0DYRn/x
+jfQgEASCQBAIAkEgbCNjIAgEgSAQBIJAEOgvAmEb/cU30oNAEAgCQSAIBIGwjYyBIBAEgkAQCAJB
+oL8IhG30F99IDwJBIAgEgSAQBMI2MgaCQBAIAkEgCASB/iIQttFffCM9CASBIBAEgkAQCNvIGAgC
+QSAIBIEgEAT6i0DYRn/xjfQgEASCQBAIAkEgbCNjIAgEgSAQBIJAEOgvAmEb/cU30oNAEAgCQSAI
+BIGwjYyBIBAEgkAQCAJBoL8IzNFf8T2S/sgjj/RIUsQEgSAQBIJAEAgCg0ZgGrANVOPBBx8M4Rj0
+0Eh7QSAIBIEgEAR6hMA0YBssRTXCNnrU4xETBIJAEAgCQWDQCOTcxqART3tBIAgEgSAQBEYNgbCN
+Uevx2BsEgkAQCAJBYNAIhG0MGvG0FwSCQBAIAkFg1BAI2xi1Ho+9QSAIBIEgEAQGjUDYxqART3tB
+IAgEgSAQBEYNgbCNUevx2BsEgkAQCAJBYNAIhG0MGvG0FwSCQBAIAkFg1BAI2xi1Ho+9QSAIBIEg
+EAQGjUDYxqART3tBIAgEgSAQBEYNgbCNUevx2BsEgkAQCAJBYNAIhG0MGvG0FwSCQBAIAkFg1BAI
+2xi1Ho+9QSAIBIEgEAQGjUDYxqART3tBIAgEgSAQBEYNgbCNUevx2BsEgkAQCAJBYNAIhG0MGvG0
+FwSCQBAIAkFg1BAI2xi1Ho+9QSAIBIEgEAQGjUDYxqART3tBIAgEgSAQBEYNgbCNUevx2BsEgkAQ
+CAJBYNAIhG0MGvG0FwSCQBAIAkFg1BAI2xi1Ho+9QSAIBIEgEAQGjUDYxqART3tBIAgEgSAQBEYN
+gbCNUevx2BsEgkAQCAJBYNAIhG0MGvG0FwSCQBAIAkFg1BAI2xi1Ho+9QSAIBIEgEAQGjUDYxqAR
+T3tBIAgEgSAQBEYNgbCNUevx2BsEgkAQCAJBYNAIhG0MGvG0FwSCQBAIAkFg1BAI2xi1Ho+9QSAI
+BIEgEAQGjUDYxqART3tBIAgEgSAQBEYNgbCNUevx2BsEgkAQCAJBYNAIhG0MGvG0FwSCQBAIAkFg
+1BAI2xi1Ho+9QSAIBIEgEAQGjUDYxqART3tBIAgEgSAQBEYNgbCNUevx2BsEgkAQCAJBYNAIhG0M
+GvG0FwSCQBAIAkFg1BAI2xi1Ho+9QSAIBIEgEAQGjUDYxqART3tBIAgEgSAQBEYNgbCNUevx2BsE
+gkAQCAJBYNAIhG0MGvG0FwSCQBAIAkFg1BAI2xi1Ho+9QSAIBIEgEAQGjUDYxqART3tBIAgEgSAQ
+BEYNgbCNUevx2BsEgkAQCAJBYNAIhG0MGvG0FwSCQBAIAkFg1BAI2xi1Ho+9QSAIBIEgEAQGjUDY
+xqART3tBIAgEgSAQBEYNgbCNUevx2BsEgkAQCAJBYNAIhG0MGvG0FwSCQBAIAkFg1BAI2xi1Ho+9
+QSAIBIEgEAQGjUDYxqART3tBIAgEgSAQBEYNgbCNUevx2BsEgkAQCAJBYNAIhG0MGvG0FwSCQBAI
+AkFg1BAI2xi1Ho+9QSAIBIEgEAQGjUDYxqART3tBIAgEgSAQBEYNgbCNUevx2BsEgkAQCAJBYNAI
+hG0MGvG0FwSCQBAIAkFg1BAI2xi1Ho+9QSAIBIEgEAQGjUDYxqART3tBIAgEgSAQBEYNgbCNUevx
+2BsEgkAQCAJBYNAIhG0MGvG0FwSCQBAIAkFg1BCYY9QMjr1BYGYgMNtss80+++yPPPLIf/7zn5lh
+0ZRYAcbHPe7RRVdgnBL80+joIBC20Ze+Lp7Atw9/UFyC73pjLpnmfNcz62nlH3744UateoHpni7g
+THcrpkr/v/zlLz/5yU+e/OQnL7/88mjHVKkxbO26p9w1XWplBP7tb3/76U9/Os8886y00kpzzTVX
+lxVTLAgEgfEiELYxXsRmXd4Uduutt1522WW33HLLn/70p6c85SlLL730+uuv/9SnPrWqbE783e9+
+96Mf/ei+++5rSziQDHPf85///GWXXXaM2VPdsjKrJEsUguK7JOqXhiRN7XvvvfeLX/ziL37xC8js
+uOOOrVYMiapDq8bnP//573//+wsvvPAnP/nJVVddte0oGlrlWxUzyN0On/vc557whCdsueWWG264
+4RjBBsb6NEa4HLfbl770pWuvvfYlL3nJu971rjnnnHPsW8CoO/roo7/5zW/OPffcH/nIR9Zdd90Z
+z9ugev7553/7299ecMEF3/72t5thxoaotacmlvNYjz26shpjNpuY5NSaLgiEbfSyp9xRlkonnXTS
+4Ycfftdddz3wwAP//Oc/LZvc2EcccQSf+trXvtYMqEnT3K9+9atDDjkEI2k7wbknTbsf+tCHnvOc
+5/zrX/9qq+Ucc8zxgx/84MQTT7TM1bQyvslfYoklnv3sZ6v4jGc8Q+tt605tJj0ffPDBCy+88Jpr
+rmHmv//9b9P9YGa9qTW8V60bZhdddNEvf/nLO++809J8lVVWaTuKetXcAOQY8L/97W9PO+007PyF
+L3yhG6QT25B/3XXXsRp9X2ONNZ74xCdWIwcsF1xwAdaywAILKFbutU7KG4RuzyuuuOL666+H3o9/
+/OO11157usPYydgqH1bmnNNPP11UbJNNNgFChV5VpucJqP785z93s88///yIIIo8gEZ7bkUEThKB
+sI1JAvhf1dGCc889d99997Vwn3feebl8jh/t4BXMgPvtt5/bzPrJTOom//vf/37PPff84Q9/QBrk
+/Jegx1YAY0y4pbACt9122//8z//8/ve/J4RM+b55bq2bal/2spftscceiy+++BDe2/QsVg+hbo2+
+GMKf+tfq/+abb+abLU9bx88Q6jy2SsaDjzK+xzDHVdwUpfjMZz7D8P333989JacIf1TE/9uarBKd
+2jXwhA/XWWedK6+8UuHVV199bHbSSc60ywfvozA99hmM8manSy655FOf+pRxe8wxxyy66KJVlw1G
+gbQyDAiEbfSyFxCLAw44ANWwdfK+973vFa94hfnroYceEvF2p91+++0HHXSQ1ZiFl1aru130GC1Q
+rKGKBcFCCy3Uml8vZkXovvWNxCyzzDJkKk8Ni7+77777qKOO+utf/7rPPvvQR5l6xaJAPafV65Om
+QGt+VWuMAuVSKTmGhEqUxBjSSrExCnTTXKN642e9iZLuUu1WzdtKroqNIbxTxVKlkkAxDmOXXXZ5
+wxveYPpebLHFSsWqWEnUM9vaokDb/NLQeC/Nsrm6evXC8ju1Va9STwuMCWPYNzHaifLpJMGlqmJr
+GTlbb731Bhts4F4TKWkNbIxdvZLcSDT06UZIKVNp2PhZya+LklmVrwo0Et2X79RiJVCBTs3NshUF
+dNmf//zn+++/f5ZdVrWYxAxDIGyjZx3K64sW3nDDDfPNN9/rX//6N7/5zdXkJS1ge/LJJ4thCn07
+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
+uVq8O9P6pA+sHnzwwUsuueTcc8+99dZbH3rood1333299dZrax0dwKV826sySQMgvjI2I+lUvZFP
+CPNlanek+F8Dh/wMAjMMgbCNGdaho2UOt3TLLbd87Wtf4zKtrd/61re+/OUvL3GOtkC49Jvf/OZ7
+3/veOeecc/vtt9999938GZ7h8+IXv3ibbbaR6JODb6tP20zu9sYbbxRymH/++Zdffvk55uj9TaqJ
+U0899ROf+MRtt91GB1YjHG2Vkfn3v/99v/32Q846+f655pprq6222nbbbQtL6CSnm3yK/elPf/rl
+L3/J6qWXXnrhhRfu1Gg30lImCASB4UGg9xPZ8NgWTWY2AjyToMa3v/3tr3/96//6178YizFstNFG
+fF5bF1U82SGHHHL00UdbqfPlK6644jzzzMPjXnzxxddcc81dd931/ve//5nPfObUEg76f+tb3zrv
+vPMWXXTRww8//ElPelJv+xEOqAzKxXChoLe//e1rrrnmyiuv3KkVoaAf/ehH99xzT6cCc8899wYb
+bNAW805VOuWz/YYbbthzzz3xwj322GOzzTYbgwZ1EpL8IBAEhhCBsI0h7JSo1BUC/NAFF1xw5JFH
+Fqoxyzoc2IknnsjLohrrrLPOdtttt+yyy84555xW7SeddJL873znO6usssrb3vY2C+ue+M5ZqtS2
+AD2Fan7+85/feeedTEMOeqsM+XgGq7UuFLTbbrvZB0Gwxjh4oQpK8bKXvWzLLbdsLebqc57znMkH
+NuhTGOS1114r/bvf/Y7kthAlMwgEgWmHQNjGtOuyKPy/CPz6178+8MADf//734sB8IV33HHHGNBw
+Y0oKGNx7771C9Pvss89aa61VNime+9znPvvZz3ZS8oQTThDk4ICf8YxndOngG8W00lYHxTpdUr4I
+qQr4Wbxs8d9++lRX28qvZypc/9m2ot2Kcg5j1VVXFePpJn4AK9s6W2yxRSvb0Byy4lNvd4x0XcO2
+6sksJvv2Iaq1WMmvWqkKtJZv5DR+Fgl1aZWoSngSQSAITB6BsI3JYxgJU4DAn//8Z3siFsFW1a9/
+/evRiLHZBv/tlEbZDhCft3HAqdgjKKovtdRSr3rVq5yaJGf77bf3c2yTeFybOD/4wQ8uvfRS7fLc
+wgNkvvSlL7URI15SVf/b3/72/e9//7rrruOqtcu11x0bBa666qqzzz77KU95yqabbqouBS666KKf
+/exnJDzwwAMHHXSQKtIrrLDCm970praevrRFLJWuuOKKyy677Oabb0aekDC1qCSE42iFYkCAgOb+
+53/+p8Q2NCdHE46Irr322kVUp298Ai/pnlU05KhLMeqVsI0dIn33yle+8lnPehbEdIdDuyJVbC8Q
+OVmiy0BEvR122GGhhRYq+f/4xz/0O82dbgHvk5/8ZJwJR3Ta9/LLL4cew/UmTkkBLZ522ml2jjQE
+B2j/8Ic/FDF65zvfqQA8pWX++Mc/1keKEYJ9vuIVr5BIZKXRg/kZBCaDQNjGZNBL3alBgCs97rjj
+eKMnPOEJfPD666/P94ytCmcmtnH//fcrxr3xvnWvL5N38VSF0xsC+DzcGAtcVzn1j3/847/61a/w
+jOJ9lafPl7/8ZRs0DqtygWTK5Bo998G7b7zxxhxeoQ6Vquryc1/96leptPrqqwuxlJ8MVIZ7diqF
+z+MUVd966607sQ1yHK044IADrr76aoc6K5WY6QjtG9/4xne9611OXBYQbBtxyaUMQ1T0MI6rs2Qb
+qlOARRDw8VP0RVSpzq4q0xoJteDz6U9/GrwVZSnqOSvz5je/mQ733Xefcyo4U6mLzDFHWi87hYpt
+aFFU5rDDDoMzMxEF4Mg8/fTTmenQKx7zla98BcdaY401UDd1sY1jjjkGI3z84x//zW9+E9PSCl7o
+RLCKOOsXv/jFY489lliAsE4mc5yb+cAHPrDJJps0rMjPIBAEJoxA2MaEoUvFqUEAS7AYPfjggzkw
+PlgoojxY0b02KrZ124V/8EDcISfaoCOVfB7rwx/+8E033cRZctICIZbp1tmCBE5a7L///lzXe9/7
+XuEKVQjhFPlmBKJVoBxtcZxFJVpZf1tYW6OLPfDlL3nJS5xjJcfyvbV6UUk+0rDzzjs77cFTcqvL
+Lbcc3+zJDtECz+B86Utf8gCOXSfaOhaK1vC45aFW/Ib+MotvrmxsTWiFnqgJ5gR/5s8777waevWr
+Xy2u8NSnPpWfbq1VctiFN2AV2B6+tdJKK2mUeqgACuiBFz8d73XJtw2yK6+8UkWRDyQMCUBEtCUH
+EcEYkCqg0Rk7pL/+MgCYCQH6wNmn6l/VYYsUfuYzn9EL5OAucAAUpoKjfOELX5CPHTqyQybTRDh+
+8pOffO5znyMfVoWWdTIt+UEgCHSJQNhGl0Cl2FAgwKXx6PyT4xc8jQWod2zwsrNUjrPkY/gtJcUP
+Xve613E8xSeR6aonaXksV7m0wjZaZfJP4hl2cPharvENb3gDVlHeM8GfccOf/exneT7e3dMurqIj
+rULGyNGu9TT//Za3vIU0ftFOij0a6mm6k9vDS7hSnltzNms4dedOGIUcCPlY8buEIdnKed/73rfk
+kkvuvffeuMsHP/hB+eIl4goIDfljKEYa3c4888wzzjgD2qDDxv7617/qC3tJ8rXC03eSgG+df/75
+gEVKxIRe85rXaI56nL3QAurjiK7niVgKOhsfNjuYLPxgAwV1IJZpEjD55Cc/SRp2suuuu+pE/AAs
+1EAOHAHGFTrpgHMYMLvssovzOhpSUcBDLITY5z3vefrUBoq6KKNOPOKIIwwS6L3gBS/oBHunhpIf
+BIJAWwTCNtrCksxhRIDPs09/6KGH2ra3dn/3u989xnObDQMQC8t3bpgXOfnkk9ddd11xEUyF2+Nv
+ZH73u9+1zlarsI1G9fKTAg5heETTT3593333xWDKJe6QdySN37VZYAfESYgllliirZwxMsUzyrK7
+lJEmmevtVMW6XCDER9Ms+shHPuLlGYVFqfja176WBPyDSjYynPHENkoTbCHT2U/FlOkkv8rHNhAy
+gRPeWhiAv/fAsHZ/8Ytf8MpoHH9fyFxVpUrQBwnzrToextNTW7v2R8SEfBAINlKJJuXorrpFt8p2
+EaPy/JFjGUgeQsZkxVQREPrYxz5GCNZSNdpIqCWMgT2UWr4J9FFsmWWWAdp8882HWEjoRyzEoRll
+UCLyKx0aMvMzCASB7hEI2+geq5ScYgRM+tavPvyK4xoOhxbP0Y1a6uIWKALvKFa/11572UpAVizr
+HUXkpWxGcMP8DbdavHVDLF9oFW4rgR/imcpJiHoZ3lE8wyIem+GGOWNnQeoF+pFGlbypjM7cpMdT
+0SmOvGqIRfYmfBxEEAJhYzk7WRXoMkG+kqzGDzzOY+cIRAABpngJYx0EQRqclmgrEDJe6YGoiR4d
+ddRR3gNGDcwDZRGVERbSj4S3rVsyNYfr6DI/7W6IxzCtIgE0QfuQqrPOOgtZbCvHM892cKoBQyDi
+BTSFHVx1lsV+EHZIDYEfz0KLhQhfKV+10lZsMoNAEOgSgbCNLoFKsSlGgMfi1UTanUWwQhVIH9s/
+tarLDYvhYypOMJQNkaqMrQFHTW3YeyBCmierLlUJLk3wA+GQY9fATr+cuiuStvfBj1oNYy3Yxmqr
+raZMJaEfCUaVWAsuZaeglSfBDQngPpEkewcNnbtRqcRIhAGQgx133FFUqSI0zmOKMHmag2/2jQe0
+tRcg4MXtHMIVn8DY7JsIcjiZAUn7GtRu1byum6uOnvjWO2rp+kKAqjLadVCGtHKwtMovCVfVAkWV
+r7NwJlp55hkPcxDHu1sAZb8JjMJgtop0Yr1/q7pJBIEgMAEE/u/2m0DlVAkCg0HAEpOn9CSCo4XO
+STh5wB+UdarvyoNK+OnDT7RVTAHhB5zA8w68l6U2YmGBy/NhMOXxS9GOTmzDSQVulWShe96otQnO
+yYqZfMQFL6l7UE23lm+b2VpsjByWol8K2J4QSmn1jmwR8IAJmmXdr8XWMmPId4mDd1pCLaQB86gb
+JfOFL3wh308HbKOTHI067+nEhvMQKCNC4CO2gazYlBGSmSUt05BNNE3DFump61AaVQCZ0C8kt1Wj
+7JrVL+FMjsjQzTMpoj7iIk63lOOiL3rRizbffHPSOg2kupykg0AQ6AaBsI1uUEqZKUaAs7SBYsvA
+7G9Ra+PDKYSiE2/B1Qmz+2kLQ9CCU0RHrHR5oIbeXC9R3mzhtZiOMvjI4aQXWWQRBwtKEJ6/4VMb
+FctPDINwaWdUq/V9vWRRhl+U4IN9V1eVp7mcula8pn2EqswEEswppyUKmRD8bwjRBG01SnMq1Vtv
+lOz0UxOYgavA92kUQ84YpZXydHHjavUTFXBWBudwkNOpCHsijoJ69sTHKRwnYBwHaUvyioQKT2xP
+d9eBrZqgWzl5U+XUE6yo/5QGBeg8HuyUqHALlWwMib7YC0M+RIxsEjk62mpyQ05+BoEg0A0CYRvd
+oJQyU4+AUITQAj04G2cw2yr02Jr5am71Pe95T3kAtV6MM/NiBnsluIUzH0hGOcXJU/JeHjNBOJT3
+3AQPKrNeV5pzEnsvrp2DtDFhC6BehhCHCsnxXUgMF8vJFQaAgoh2CMzUq2jFhks9p54m0Kee05rW
+kL0bIR8PgjqPwqKGd8RyeFCZ1ND6eNmG8h5COf744xni3KvjFw0JdlgIx89EAlrVq3KKsxf48fHe
+EVElYp32cKAE7bDR8/znPx8Zqso3EqpD2zfYBVFae0d5vK28Fa1Rt/xsqC0TtgT6Ril8AEgr3WeQ
+iHZgrjZfuj+G3LbRZAaBIFAhELZRQZHE8CLAVXj3lHVtfeu9qMthOOZpZ0Rkwr67PRFcoazFG/Yo
+acHqL9w4GIcKvdaiksZ7ccl8Nm+NbSjZ6s/keK6BTy0Pcwq02IKp76eo5XHQ4vDsEXCrcjShFk1Q
+mZ/+9KcOKlZsgFGCK6o09Kx+srcqXGU2Ety8849eIAYE3/Y1qFR5VglGeaZUAsdyroIVtGoIGfun
+Kl66hS1hM05QluhOqUKs3QcsUKNM68SN1PWSDLyE/3bOg84eA4Gk3SucQ5jKmQmhkQbbEK2pDKGz
+8tiS8kIjF154of+Bq4PjtKwXz5dTNWObU65iaV6qIUgm8GNzDYbGjG0a48dOjVCZHR/QobZiXa2D
+oZsmUiYIBIE6AmEbdTSSHlIE+BXkQCi+1Z9x5xwDR4ht2B/xn2rcIbfB/cjn470gi2/jt/iMcsBQ
+pjdOWs4KbxAon5+2yGa893y3PRZQcOGiPLmgsOY+//nP809298u2CzkebfBqLy5KmgPj3TXKg5az
+k4gFd6hR5xDl+/C+Dr3KbwXdIQN2CUtoCDHSLpltWQI3T2cvrnCuRYRAAMDLTItK7MKuvJLE6ygU
+Q9c0LbOtnFYdSo52GSLwgFV40hVu5DvJ4SoTIOzNnuINWBqC1UmIkp5YUR1jsG1h04RpCutWAQnf
+1Cs6y0QWdR/eIOrj+IuQjOoQgIMXbJSXnXiSRRWBFua4Spr/9aVbEdtJjXo+u7RbtnK04miLj8xS
+hkVFE62QX6+YdBAIAhNDIGxjYril1qAR4HV8Wlst3II3ckkBK1E5HIkYw0477SQ8jqZ4NXjZHMFX
+kI/yLKjDiV5QgTGIzPOa5YFVhTlXPqy1ITmcmUUwJsGxlQcZvO3KCUfCxS24rrIt4lyIR23LIQmk
+QQHvvTjllFOsyD3TgRJhP5bU1vQOClQermqRe3MG1qlPHtd/r2+44YaCKHLo1lYxl5wwUNJC3KvB
+hV64c1Cwyz+/oBokO4zpxVZQmoDvJMr7LUiz0YBOOU3pECU3LAAgMEO+DSYnQFG3yoRGQmHKU8ap
+GrENYQn0hUcXH3JCQn8hTDBUi3qYFsfPdtsZqBjNkQ88wx6Wd5EJYjn5oZY/OmEmbJXUfQIVNrD0
+Zjl801Cg9acR4tkT9EuvQczL5mklPGMnBStyhgP+4hyabjz80ioqOUEgCHSDQNhGNyilzNQj0MlN
+csA+5arv8pFTVsY8UHls1aLfJY5z9913F/nn+PkVL7JkmHzLfatzPpXbG9tUrhGJUcVimmRsQ6hD
+lXIC1KIfgxFO4C+VKcJJ/tCHPuQnP41e8GQlVoFncHiYhxeLlZKlaY7Qn4o5PeDoopAAD62kd4w6
+7sCuUqb+zZcLsdit8PYq8RK+k19XBTfSKAdse8UxTDs7RaXSVqVeXVTbNHA4dTwG1RAWcsyivLKT
+BJecj/H4KIXxqrbVZQIN38JLPJMiBuPt407esIWGQhq4SxUvYbv4B2lCRGxxNBhL88ytR1WxDbzK
+y9MwGwd0aEKg0xWl93EUby5HLr38rTJT0/V0XT35+ATqo4oetDuDTjGBAj6YIn5DZ+l6raSDQBCY
+MAKzf/SjH51w5YFVzPJiYFBPu4Y4PHECLpzr8hqr8gYnvtaq1DaEFTO3YdlaeR2uC6XABrhhro7L
+sb3ClyME1t/84iwR4N3F8K25OSf7NRgGR2h9zyXvscceXrZd3hlVl2MXwIkHUZPikjXqzRBCIJ6d
+oaoDsE56UtKRkaInJe2/UB4v4fn8tM7uFNvQEJXow21zvU57IFVUEuahEm6EYKEaGioqSYgZ4DGU
+gRjzS2SornAjrYDHSSjgDIq24Ea+LadCrewulchEo1b9J5RYJJagmyigvA5CtvAkyKNclXrkK0Zh
+tiimmzTqVK8WlXF0Q3hJXTxSZ0ESzyCZjUR577iDHaRhJ8CkQLGUHJ2uubqloNZrwl2AUtIlSuop
+u13+fEcoSLoaNnVbkg4CQWACCPzX83gTqD+AKm5467bc9gOAepo2YWyU4cEb+VRWcGx8EodUzyxX
+qypcGr7yWL3/q1hJGCNRJDh2YNefEISAXyyiOtUqVUp5fo6z126lSasO1SUCW6+2bYUmVLJed8SS
+SrwyJ6puo3AluUuxVfVSsaz4K8mt8qvyjYTqcnQKELAKIFRCWkuWwiUfsPUCLjEQy2QsMxGOIqeo
+p2RVvsoZw9JSRsRLNAViPmMUrquRdBAIAt0jELbRPVYpGQSmDQL8JSc6bdSdqKIjYuZE4Um9IDBE
+CPzXimGI9IoqQSAITAKBUaAa4BkRMycxEFI1CAwLAmEbw9IT0SMIBIEgEASCwExFIGxjpvZs7AoC
+QSAIBIEgMCwIhG0MS09EjyAQBIJAEAgCMxWBsI2Z2rOxKwgEgSAQBILAsCAQtjEsPRE9gkAQCAJB
+IAjMVATCNmZqz8auIBAEgkAQCALDgkDYxrD0RPQIAkEgCASBIDBTEQjbmKk9G7uCQBAIAkEgCAwL
+AmEbw9IT0SMIBIEgEASCwExFIGxjpvZs7AoCQSAIBIEgMCwIhG0MS09EjyAQBIJAEAgCMxWBsI2Z
+2rOxKwgEgSAQBILAsCAQtjEsPRE9gkAQCAJBIAjMVATCNmZqz8auIBAEgkAQCALDgkDYxrD0RPQI
+AkEgCASBIDBTEQjbmKk9G7uCQBAIAkEgCAwLAmEbw9IT0SMIBIEgEASCwExFIGxjpvZs7AoCQSAI
+BIEgMCwIhG0MS09EjyAQBIJAEAgCMxWBsI2Z2rOxKwgEgSAQBILAsCAQtjEsPRE9gkAQCAJBIAjM
+VATCNmZqz8auIBAEgkAQCALDgkDYxrD0RPQIAkEgCASBIDBTEQjbmKk9G7uCQBAIAkEgCAwLAmEb
+w9IT0SMIBIEgEASCwExFYI6ZaljsmhgCs80228QqplYQCAIDQ+CRRx4ZWFtpKAj0BIGwjZ7AOI2F
+mLYefvhhBtx555033HDDzTffLHHPPff8+c9/fvDBB//9739PY9uiehCYKQjMMccc888//0ILLbTo
+oosuueSSyyyzzPLLL7/EEkuw73GPe1wWCTOln2eyHWEbM7l3x7YNk/jb3/523XXXXXTRRZdffvnt
+t9+OXvzzn//817/+9dBDD/3nP/8Zu3quBoEgMGAEZp999jnnnHOuueaae+6555tvvqWWWmrttdde
+f/31V1hhBT8xkgHrk+aCQPcIzDb8ETkacorDr2f3oE9hSWsgSP7jH//47W9/e8YZZ5xyyinXX389
+boFklAjHFOqWpoNAEBgXAqIaaAf+sdJKK2266aYbb7zxYostNs8885TbfFyiUjgI9BuBsI1+IzxE
+8s1NeNtdd911/PHHn3zyyYIZwhshGUPUQ1ElCEwIAbe2wIZQx+te97ottthi8cUXt+2SW3tCWKZS
+vxAI2+gXskMl11rHzogDGUjGt7/97ZtuuslMlHDRUPVRlAkCk0TAbW6rZdlll91mm22EOpzq8DO3
++SRRTfVeIRC20Sskh1eOGceRz0suueTII4+8+OKL7ZsMr67RLAgEgUkj4GDHeuutt912262zzjoO
+luYM1qQRjYAeIBC20QMQh1mEPd077rjj6KOP/trXvnbvvfcOs6rRLQgEgR4isMgii+y4447iHIIc
+WWP0ENiImhgCYRsTw20a1BJW9bnxxhu/8IUv2EB54IEHpoHSUTEIBIHeIfD4xz9+880333nnnZdb
+brkc4+gdrpE0EQTCNiaC2vDXwTPs11511VUHHnjghRde6KHW4dc5GgaBINBzBDy0suGGG+6xxx6r
+rbZamRZ63kQEBoFuEAjb6Aal6VcG1bjyyis//vGPX3HFFVnTTL/+i8ZBoHcIOLn1ohe9aN99911j
+jTUQjt4JjqQgMA4E8j8p4wBrGhX92c9+tt9++3lnV6jGNOq1qBoE+oGAU6KXXnqpCcGr/PohPzKD
+QDcIhG10g9J0KmPt8pvf/OZTn/oUqpGH36ZTz0XXINA3BEwFl112mWnBa/0S3ugbzBE8FgJhG2Oh
+Mx2v/fGPfzzooIPOO++8RDWmY/dF5yDQJwREOM4555yDDz7Y8/B9aiJig8AYCIRtjAHO9LvkleRe
+3nXcccflWOj067xoHAT6jIA/KPjOYx+JPjcV8UGgiUDYRhOR6ftbsPQnP/mJ5129nnz6WhHNg0AQ
+6B8Cf/3rX00R1157bf+aiOQg0BaBsI22sEzLTAHSL37xi3ZSpqX2UToIBIGBIPD73//+S1/60n33
+3TeQ1tJIEPhfBMI2ZshQcPLLK7z8d7w/WpshJsWMIBAE+oCAKeKCCy7w/8/+y60P4iMyCLRHIKOt
+PS7TLvfuu+92XEOYdNppHoWDQBAYMAL333+/6SLPpwwY9hFvLmxjJgwAb+/53ve+d8MNN+SR15nQ
+nbEhCPQZAROFd2+cdNJJpo4+NxXxQeB/EQjbmPZDwR6KwMZZZ51lvTIwYxZYYIHnPe95A2suDQWB
+INBbBJzbMGkkvNFbVCNtDATCNsYAZ3pcsjpxXOPXv/71INVdfPHFvRb9+c9//iAbndlt+QOtZZZZ
+Bo2b2WbGuuFB4Je//OXFF1+c8Mbw9MjM1iRsY9r3r0fnvcvrd7/73cAsmXfeeV/1qldtvPHGb3/7
+2wfW6AxuSHTK31iccMIJ3pVy/PHHr7POOjPY2Jg2PAiIiToumnfzDE+PzGxN5pjZ5s1466xLfvGL
+X/zqV7/quaVcoE/jhaRy5plnnu2333733XefY445NtlkE4dFTjzxRPHYLhUgoZyER1me9rSnIUne
+DmIXuXy6FDLDij31qU/dbbfdXv7ylxe77rzzzhtvvPEPf/jDDDMz5gwhAsIbPiuttJI3jQ6helFp
+JiGQ2Mb07k2e+6c//ak/Rum5GSuvvDIX2BC7xRZb+P/6j33sYxykS0suuaS/erIcX3/99Rsl2/5E
+UNZdd92jjjrKP9P++Mc/Pvvss6+++mr6f/WrX9UcItK21ozPnH/++Z/1rGdVZj772c9eeOGFq59J
+BIH+IYDaetNXHoXtH8KRXCGQ2EYFxXRNOFvudT291V7gYaONNhLDIBwnqIQ7Vrbccss9/elPF+FQ
+Bj+wCsc/HnjggapMp8Tcc8/9tre9bY899sBR0I56MTJf/epX77XXXrYSRvB9ISJDtlGQDLAIJp1+
++uk333xzHZ+kg0CfEBBcFJ7sk/CIDQJ1BGb/6Ec/Wv89nOmHHnpoOBWbWq2sSO65555jjz2250dE
+HVcUtFhxxRUffPDB0047rTLTGZErr7zSPy088YlPXG211fyv/d577/3Nb37TnGUrpCrWNrHrrrt+
++MMfXmKJJcpCSnnB25K2H+R05Nprr33NNdfccsstbavLHG/wY7zlO7XbKb9X8m2c2w677bbbvC7F
+Sx5Rrk7vntdirxrtZFQ9f5Bt1dtNepAILLbYYo4KCbDN8hYepFZpa+Yh8F9LzJln3sy2iDO46667
++hHYcCDjuc99LvTWW2+9V7ziFUIaFZJco2fnbr/99ptuusmeyLnnnltdGiPx5Cc/+aUvfelTnvIU
+ZUxqXrJuJ8U3QmMTYa655pK/yCKLbL311hhM3SKX7NogN6IpCy64IH/897///S9/+YsIcNsoyHzz
+zec4iJLKP+EJT/Aedwrfe++9aFnb8pXONMSE8B7qeZaY/EUXXVS7+JB09T54BczOdjrmnHNOVYo+
+yotPVBSBAixVknD/kyf80zj+IjikLsnaUkskg7YC2myX0wj86GVqAEEZz62QqTkg2D6TUF6OONNz
+nvMcCYWpZFSgieUnVNWV76MttpRLrlZ6Ug9EasnUuirUg7x2Ra1QzD/96U8qlraU6fSBCXAWWmgh
+veDDdno6gIKMVscC0MpnPOMZAl2E0MRAUqYSqNayyy5bEHD1jjvu8E3zFVZYoVQphnONECaKWAUo
+CY2yJqG2B6booDyFKQ8lptXPQoJLF5THf4wKBBew+hTCmgagKgYhyRSTQ+CTnvSkIpAcVynWugSi
+JzlGEfV8mE8x5vssvfTSRiN9KKw5TRge+gXUMo0EdxPJGjJ0maCngKl1lwwtnzr4VNKK3ikFwOu8
+Z71AhWc3CdWhV+7NbsqnTBCYGAJhGxPDbShqmYnMFJUj7IlOZszll1/elgfhBNrj8OxJ4+C6qfCw
+ww4rB9q7bNSzsibcUtg0/fWvf33fffeV4CP9t8uGG25YLq255pr8RMU2pD38Qpm11lqLhyhl+A+n
+PRz18Kb24g8qHZZaaqnXvOY1b3nLW5x6M2WXfDO+J4TFDDzsxwFUhRuJ1772tYcccohWzNrs/cY3
+vrHtttsKt6j+7ne/+9RTT1Xe/G4VuN12222wwQa8QpHACvtNRxxxhN2QornTLUI+/JMC3JJNouuv
+v77enIAiXgVhbv6SSy554xvfuOOOO+6zzz5cER/zjne84/DDDy/l+RWYbLnllptvvnkhDfJpyH2K
+aSmGqRDCQ9vP4qr5sJ///Oc777zzpZdeqqTqtq4Ih4ZL9Hzve997/vnnF+Ef/OAHYcXF6tDPfe5z
+tCLhJS95yTvf+U7fwC+ECciXX375QQcdRNU6MyhCqm9yXvayl2nrBS94QVVXef9y/rWvfQ0rLWxv
+1VVXFQxDOFQEyzbbbFP/hzDs88wzz+SzNe0vBt/1rnfpa8o7iSzeZnCKAOkap3wcqlVMDs6KpR15
+5JHwhwyi/L73vW+NNdYo3lqPOxjEOmKxhKItgmv8ABbg+veTn/ykAaZPi//GZQkUYSIQMrYUYahA
+oTsECkQRCEZ3X2U+TSi/1VZbGTZonJ+Euzc9L2a0f+hDH8K2IUA4k9F3EBG7yy67GD9Ufetb32rs
+6Xp3BJX0LxsJd4m9Nhmrm0ImLkimlUApIAz5kY98RHpiH0ri4kYjhScmIbWCQDcIhG10g9KQljGj
+mSl6+O9KBPLTeADCUdls+jbvm3nrrt2EyCVzpVWxsRMcQ0UXTGp8ZFmKWffvv//+t956a5npeA6S
+iyhTPwfMcRa3Uck36b/4xS9eZZVVzNcm4korOpt2ufaKZ5QqaIFMDoY39d8QnQgHZ2k9WjiWGf/L
+X/4yBQBS6YM97LDDDvaDxDwqZSSo50VnrECnDjjgABM3ZJS0bHVVYR6IIVUVXrNaqVPmqquu0gpw
+NF1aL9/K87ibbropyZRXppIgbWnOV2nRiV0cghzLU2KVgYOTMaUwCY7l4hCluqbtf1VsQ8myvufw
+bJDBDVBcr2JVWxKq85QA/8AHPoAo1C9VaZ3ypje9iapiG1WmBLuYgLsAxJsr9TK49EjhMdbTYK+X
+R49cLT0uURy8AnRzSYJpe+65p0tVLd3ExtVXX/3/b+/uWaTLyj2Mcw4nE0QzQdBhUBMzIxMNNJtM
+UTAQRFBEmdCPIDgiI4iBGBj4goEmYjCRmaOgjGBiYiCoIGa+gAoO6PnpDevUqe7nqeraPV3dXVcF
+xa693q+1a93/da+192aDiQOPgdntIPm/+93vVm3tevHFF0ctTR3+w/u/XUUvvPCCzBdhZ1TYNUDe
+sfqf/exnHa/iZKisr371q96kqr3r8qOnv/jFL0o4TRPfgWtA709W8leuFo0XQej8I6axNAqxMjVX
+qOVLPTWF0lXf+973qKX5Ob3vlulJ6O+//k2rkjc68Kfju1rNv1HaIkfgeAKpjeNZ3buYBghTJSPs
+rdTMLkW3lpji8zSsEVPObI+ZuhHTdlH3koy19n281JAJV7BhcWa0BlwzYMM0l8M4SJjnvSYYiM1r
+3RSzTC87IQnVMoMse0NbCCUL2DBucLaQA2DyIWVEVknu67FS6m/+x6zyUvjeK27v59RzToLs41jm
+Js1M2pw3T9UiltjHGfUxMZUzH4CZsZ00eEpIwXCQOBh1JeZzzz3HYzSZkDLf+ta3RmnNmfUtCavG
+gC2fkGhm55pDIgj1+eAHP4iAiS9fvb2lozYY5uUVZziXR0TOqurnFCHb8b74yd7wWzjz/PPPL6mh
+bhz+wA5wefKL8DQQN6uS6wAWm3KW1JAWfzpglJ8DUo/3xXrNSvKkgwXq2ggqM/XZC8UZeReJg70g
+P0kE92z/+Mc/5t/aW9UazXE1CaGgvSC75K6G6u7xytABQpGk0Xelxm4SQmT357UN5FlZcbTipZde
+orOng3hK9Kx/39TcX4MzbOkwTqyrf5+V1TEHOsswoqXHRC5OBE4mkNo4Gd35ExogSA0rCxurwsCY
+1FoxsUww8629DFlHE0pxuO6///3vW2vfG7L34l/9yQDzgZsfCzK+m7d9+ctfNkryor/yyitEjCFv
+N5UFbF4EMeckW+glUmwtu/WhD32I/WZyHIsjB6Hmf6o3kdXt29/+Nuc/Y8kH4Lz4gkzlmRzelL11
+jd1yd4/ZSyJJZFsWzDutfSypwRNgps6dQM2wMUZ/CVkgM3ht4UFByexzrIUldssHNsBO5rxHc149
++eRlPiZ5t2jHOpe1U/85b77LkUPEEIJys1jDtDu20kT2mX+DwNsxkTnhhfLzm/TvWV9CygSaA0bQ
+iAMiRhspM/aVvpkcNI2vXvXEJyOgdv6Z/yxUXVUbqira0jHucbDQpsKuq8985jPTBKG07NjmKeLk
+b8bYlUO7AGjVhnobQeBq0Vj/CGs3L7/8MqPuenZhLDk4vTNyea90XaZPKUiqlIyYHtG5E01vClWc
+zUz6euQOLwuXj4T2W1CillqWRif+XIEuHrrQ0t7xz/i3XKLXuLtcFRYK19Pz7J3i7fBgDPXxD/3A
+Bz4wfw1Fq5jIe8250U8DiEv9RkmKHIETCKQ2ToB2j5IYbjbWhpeen//DH/7wtTpjN3MTLIbHMrbJ
+tM0B107RduPvHjP85AWbtEZek2Ym07hp05yVdev6hlceXamM9Vws5uWTg2eX8XUvTzJD4qYY0kEo
+SyYHwmIc6ROftbO+IFs/DcpMpq0hivaT7HBwUG1oGmNmDyyTaTouPnNi+WbyZ66+8IUv8JGMT8I0
+1ERTNYSqsyLYQkaI7V9zU8lHbWA4NRdZ37HKxvpr1QbTbvPBOGbEVArfzDAfm82VossUTSZyPhEQ
+rM6YdgkdsFs2UoytnZr7pnVMtcHUESOeNMeuCKYUq1UTBtXymTaqAMcAaeIMm3StYaM2RPM9pTC6
+JN3qLyLDGWm3y+LJX3dTmZYP/KTkVI/kGlB6hAOD9prepwi5vsgRMdWBVhgjPfmsb4bcvgq9DC8X
+jmtV/ivU+w5tcKHzNJAIVoRVj8nHteQjyJ9i+ZNcMP4gxLEmK9S6FQcVVbQyvPYAf3tBePusjdIc
+lAr4dtVMu8gm1wO1IcORiUPbH8eFcW2GNzrJJ7e670YJixyB4wmkNo5ndR9jjvnZUjMGnqXnrWVN
+DdxPz8psj3HieH96tGtD2W8G0kBsI8gqiA2z4uDDJpmyUxUMvJNmjTPOTlZ+mjvOgKjJrKxvP1lH
+BoBlXSZcfFbNSs3YNoM4M7BGUgfMg/yfvpjCTljmN/RLLkOp+AMM9FMZtt+MWW3H5Phebm0RWHE+
+Axbopz/9qcm9sky459ll6swRMrv/xGRXuMFHskzOu9/2MHKWzBm1lafFCGWpjCn4s88+u7peNKYI
+NxU2L5fEplFizgGXDESK4Doa9ab5s1bC2aBu4mjsuOJ1K5UwyzH8HJ///OfnFiHWnRxRrnzM2qdK
+u98o8a9YV5ptB0r/0pe+9NGPfpTbiaeHiFRVHxZ0N9Vpx3z+9l2O1JCDVsvftTFFC/VzpIZQTjjG
+nv7TdvUHyvfVci1mLYeNBtqixAuyLlFWX29KpQmKs710dvg6Q+u4/Ciwoe2MrqGG7TCdyw8xPifq
+0BW+PCVXK+CMRn3lK1/h/1uhtAXyLhhnXGBEBpiy5fCY6019qA2fleTkg7nOT05ewggcQyC1cQyl
++xtnmcCTq8jmeRioIdL8ycZ4/v9d2znZGtccmEWZKVoTmdvtGFGR2SppjyzdoonVAbd+mI7bPGiB
+hsEbA8C8udeDlLHzjjlnXJdhsJ/AXRIM7VTDeTVcoc6boy83vppQHgb3VSURxqzOGRaCWHm62uAn
+YM/WEMxRv/ZdykTDTTpXqDOKWMURNyL4yW9hzj3+AwaezTPt5kkaqyO52T/ruBLuHdATy+CpsM00
+PisOKbb8EA6oDev6NiWM2pCQW4WwmNItPbBbOkvRIjONbOQQUw2mdG7WYKRdCTTNsKVUfPQUE2sb
+LwvqLphVgb0DmpXDyR0WLkg0rEfoArKSJWZB7am0usES76U64aeqkkS7CZlbJ0dtWEZZK1YTR+uo
+qFFau/p15YDAeNTWGZlQTrPMxM8xcFao/wuTP1cUv5GuodSXLnQB0zd7Vxf4GD5dbUjlqlulOODS
+o3tGbfjJPYawyliOnH89sLvPwtlNe9Pj7cPITUss/gUSSG084E5nfdkVtmHM8MktMTgauWgI7gde
+BB7dvZHRpJk32BMyDLVrLs7CcQCwoMerDTVkfoy8JAtjzEJwSpM4Y54N3H7anaAyu/qAkdg15zLR
+3jFdglgL37vxaZE9ILvxZbWUypOImeDumkb5L8MviRyWpV85THyj9ipaG834WX3FYUUrMHvWOCaJ
++G6UYMxWDnsHu4pKDrsVmJjTEYIcqKGTNlswnLN8wzVCIY2V5dhgqFhEglI0UsD9I1SXY2nN3ck7
+x7PaRQBZidA1mqk5lNas/lirsgRjTWHPlEo4afmltJfvSqHqI62ryIdk4e/RrZ/73OemoEni+9qO
+uPbkSoIb8bR+OiAO1jXpwM/dUOZ/tyt3g+ZYqEto97yfq55CV+Yrzt4ZjV3Xp97fUydSQaoaK/m1
+B/TcXrtUwyIg1Tu+KDqVANUFs4dGJpZ+dh+Ec222x5ycq2tdt8ckKU4ETiCQ2jgB2j1KYhuaCdbe
+CHta/YywdACfOd/AvHRt8jEzs7GDF3d3PKIM6BIWiFExaaY5nl4o80xSiCyafNg/Xm7GiUn2XCOO
+97Expt1iGmcZZtHmpFFV/pN2ktMWE+Sbp1rzd6enhmDKaSJMrdiDFZ+iOoiLOdltLDO8uwpg0slJ
+wzasItRt7I1vd23AqFwGxr4BpppugIupcCum9ZepkkYRXrulzPn1rcRl19GgCZbVlEqJPiKrAwnI
+LDlmsZRulcexxQUYZ86NtsUyLqJRGybH1p5mn4FO/8EPfjBufxnyVJEFZsz61E4UtaVd5hYY+sMt
+MHSnm19WJdeBhvMHeOiFtBSVHTnsorQuTkGUDR1pwYKnQa1WQ+S8p9v07N6ZVcSRB09BemQON4qG
+P22K26TS15xYtJ1mrnwAH0/JOnP1YPX1bpDLzAZVd0I5qSAMUXUt+emC5826NtVuDscc+2P6HBOz
+OBHYQiC1sYXemdMaWE10WJSD5vP4irJMnsVkUWMtRXP4ExwrB6Oe+a7NhnwSTjJI1kQYuatzxJXE
+AWliiYTFZciZYQ9F4NuQxDHZwVDNjE3mIotjHd3sfEy4BWxyxwRxQg3c73vf+5gxPzWcEJHcKgAD
+OSVyrXPPzBRTDmPmZ4yWif2ty9rt1vApx4wxt8GKIGdPblDDqY/VCkUzxmPn7IGY+zxZAjcmWDli
+gaRlJ6xfsK+TD4P09NtB6TCtGyyMme0IM5FVirYQLtqldX4SGaNvyCDaa9SGqfBYbjDpOWXZRzJF
+kxrM/xgYgm+Emsg8EDYzypDssEWUbROfS8bKF9+MYwn141W1QczRMVwmgEzf2dkgE9szp9OldTl5
+8oTdu7SRCs86jjrY5EHITo/oU+0SectnOmVLDjdKqzha0HU1qUglGyzAXy8f8fe0V9dqy42yncgu
+AB3h8h4fldtblm7GkHo7Ic+rSfyd5T9X79XQzkTgtgikNm6L5BnyMX8yQ2WQdp9puL0e1o89uci2
+fHZ0by5rdwXD421t9gAu375jpsVWOLLAsLs7q1uVYdIMZzPVduDGSPM2w7SELNzYVJENr8yVCTc7
+zWIZW500WHvwhptv5cwgUSo2BLCObC0HgMdssNxWedbePY/+NNd3GyF7r7b8NG6Cla2yiBKr/ifg
+YpWN79wD6sOj4y5cBpIZMFK7fcazFlRGkBraxLcsjQay8cy/UPrMmoI4Ppwl9lisCfGc3PuWUKGz
+3uHb6gbF424FWbkDwg3JKqM47WL+7TF0ACzZwelCjljCmAxJJaFi6hq4mPk1kRWfzwNzMWWrXfpd
+TKDwtIFDHYgeBk8F9AXms0yzV1VB2uiCceDDewSIi8ESG6FDFYnPDM+KAI8ObcoBMJmICSPppgLu
+i9abe5k/iJ+uN9ucXZxqa8MKHw+VSbj7acuRm2ZP1kAYUpB0hqzwHxq62PWD2/zc+O3fRwvq9435
+lDwCTyeQ2ng6n3sdylowHssJcVt1ZX5svDdociGw8YzNytls1V6NvYmaOrDonqPs6d1UwtV1a8lZ
+L/lwKRt2fZhePgD2W+V3ncz2ypn7im/4ZrSoCpH5AxhXbnzGksXiIWAOxTE+kixWKxy7ucODB8aG
+MbTf/OY33RBhuLeQQSGJwJj5ts9xb4+hk8d81N8ak2bKR5Xccepp4upPzbD6Ux/5sAHKXRkiaXMG
+cTCpJJwgNt5az4p27QH1YPIKFEEjgjuG+DZgodh4EcawyRYuD2UXeTLROnHW7hAneY/mZlQiEqK5
+U3ciA+hO3dk7QpToIAZs9ATlIVumzqxXz9IQkuDJfTJpd7+ldcMnkTcClN1Vcz4nZsyCzsSEQqsR
+UAQF49IdGgDqFLpKEXwnU9Bu5g/i2GVPb3EOqa128dCQCOQdIMubdVpDeP54Fv0R1jUmH6KTa/C0
+DK+m8gfxH9QjV4M6E4FbJPB/e+k0KTiZAAAQ8UlEQVRvMdOyuhsCrIUBepzSt1siE2Vvvy3xe9vQ
+mB/TXzZ1uY6Vy0vPCFn+pwbGqF+tDDcDu8vssUwTahT2/AOVXzbYlNdOwzHDvAIsujMT2VDLxDJj
+dj7OsMu+CrVioqriqK1j5n/iM1omyszkSA0nsdIW91zMjHOiHf+tvSyKHMbnr850j2UFCwHLDNjQ
+ZwOKlZqVrcjcA3v3Ggi1LLK7NLPi7x4Y/U2RFbo2D3I18dJbkRmpIbJasTrsutZNWoZ8QXNGJuTI
+IFUiE7hbBKPFF7LMDMePEpGfOG5p4S5i55YvhAfi6jLKlGJjL7bjJnGGhpCWNh1vlupJ656mKYvo
+sb1jKSQrTZYeiLYHKjW0l8Kz/rjrM+OHoKRHahBYc5UO2Jt+8y/uKn4XFZHtYrtpPk+Kb/LAd7Uu
+oSdF63wENhLIt7ER4DmTG7tNPRk84/Wy4rdSISbZXYvGyvE0rDw5xt2cwp3gfjw3W/IcGPs8/sgy
+CnNy1ayuhA6YOrlZQ+GlsMthiQzDHHcIHcN1z4WwkliPcEelLXK2Duw58A3fTBfTSPes+OrAgHnS
+BjfA7NJYQcwtM+n2XZVcJ/cOmLollcYVsReB04Lbn812X6u54Kq/aNwDJqCeIWYv514qVeUU0ZB1
+niSyWXLZeOcd7/5cMa0ouQeEmLNwY+vuboniWyqyhdBDGna7nlXjJ4B02uKAZRqF5FuQhCufmX+v
+4ogPD/+25mVHDvO/oomgJlAD+KSnO2imRRAXgFUDumE3repRadIuHWOHLJLO8weMHBkI5vHytzI1
+VdrNZFVyYu7+3Iu29/ParnRyKZvdfp9sha41C6FLTU6o/Nc+Vsc+c96jVx1bR7OTaeDPecx52og2
+5+fMZPjvLt9xJ+weT7T1TbBSG7xNc4akA3NptRXttAPeF33NHbh7FZ2WVaki8HQCqY2n87nvoQYd
+T4viITC5vN26mlKvWfVuzgwYY2mFxdMyqA1TefNv0+vdOE86Zuw9tJGRsxpigYDmMHSaETKojNny
+TExyTTPOeluExzZzJGgjz7yYpIO1f5Njx3tjNBlkKcEjCrh8zNhYMu4WJtBJazTL2l1bPU1Qt7ET
+zN6u82bFJ4bEsSLA0SJ/m2ZYWfpDKfKHZcVcB4QU3bYeisUg8QPZ07AiOMCZeCJZNIcp2nVOqIaN
+lohx1SDgA4vmDzG2+epdCUy7k+P/ENka0zIk4tv/MUFqos6zRXRVBiuPfCVQrHmhbcpLvmggmaiD
+zOBXzKsHsuKaoroII24YXaxFyMCusyDd7Sw1sfNXq+k2/ipbWCCiL5lVng/GXvWon7kk6CROI8La
+SaXs0VM3ddYX8tcde5IXbbtc1UcoDU02qTmPjpOzsRervY5TZ082m40vmr+nUJEnlRhplVH02qPj
+f0Fw+DtYznP5qY+Yesq1Z03QedeMOPpinggCjssVWydddSufq2CFLsUjspiEpoOrMU84o5tsJ3Kd
+nJC2JBG4EYGtj2q4UWGnRTZMsEm7Q9Vp+TzKVEYi1tctJHwDd9lA3hR+ctspGGnfM3u+UQXUnIve
+6L9s4VOSi0yd+DAnbMbBi4ElmNsvGafl3n9K/icEqQyDJPM9g31CVkcmwZxznmFg5K6KjCMzOT4a
+5oy0DiKYDgLfy5ZcIFaoqJFQe6F7P2EUc3TAXtBD/Ona41qjjVyoPtubYAHR8qUdPLLyZ7Ht1Lbo
+E/5x19ZE5hbjaL7bki/XltLJCCCQb+NhXwbGCJNsXlbz0S1rwzelYNQzDbVwYNp92sCn5sePxSLT
+GT5H1pN1ZJJ9jox/QjQ22OeEhCcnwdxU+OTkN02I+XLJ3DQtMcQzcWSqa91IR6a9h9Fce1w1PrdV
+N5t1RmrI0AXAI3XaP+5qfaii8Znl27gKpzO3TqBdoreO9K4zNJeyXZHmuOOCrYDYOcGpe8flVlwE
+LoeAJS23hk176T9bQJ6+IHgjMlbKbIq6UZIiR+BkAqmNk9Hdl4TmJe4zNEdZG9/upmZcKVa4j1kH
+uZv6VEoEHh8Bf22faRdfmn3Bt+U1MVzwiXqGXo6Nx3fZ3M8WpTbuZ7/crFZW9D1Hwca0myUrdgQi
+cI8JuJHYw1rWLMJm21tcSrNJ1u0/6/6ae4yhqj0SAqmNx9CRXKweuGkz/BqYHkOrakMELpuAu3v4
+Hmxv4tWwgOIVNu5zuRUktvG6UZyUMXTcSoZlEoGDBNolehDRw4hg+PCYBLeMziszHkalq2UEIvBk
+Am7NdS/u3P5q1+3uM76enOioENu8vAenyclRsIp0SwRSG7cE8tzZ2CvKt+FN4m6Way/FuXuj8iNw
+CwQ8TM/nFjL6/1l4WIg35K3tIP8/sF8ReK0ItJLyWpG9+3zNVD72sY95ZCHlcfelV2IEInD/CXiM
+ih3lHgS8nhh2/+tcDR8HgdTG4+jHf7eCyHBL27wd9PG0qpZEIAK3R8BjeQ0RVlKak9we1HI6ikBq
+4yhMDyWS+YpnAXk6dfenPJQuq54RuDMCXlJocHjPe97Dw3FnhVZQBIZA19yjuhI8x9AtbV6Z9qlP
+fWrjq64fFZcaE4GLJ+C1Qd6J6Fb5Node/LVwHgCpjfNwf+1KdUub1255c4rP3qtQX7tCyzkCEbjP
+BIwJn/jEJ+zrMibc9K0397ld1e0BEeielAfUWcdW1WhiJeX555+XwMPFvRnr2JTFi0AEHh0BXo1P
+fvKTn/70p73VL6nx6Lr3wTSod8A+mK66aUXtAvMsoK9//etf+9rXTn691k0LLX4EInCvCHhmKJ3x
+8Y9/3FuRkxr3qmsurTKpjcfc4wSHt5l897vfffHFF3/9618/5qbWtghE4AqBt7/97baF2sjl5QZJ
+jSt4OnGnBFIbd4r77gsjOLyf2nvhX3jhhV/84hfER4PO3fdCJUbgLgn419uf8a53vcvNrp5Qblto
+//q75F9Z1xJIbVyL5bGdtHXU+1q/8Y1v8HP87ne/e/XVVx9bC2tPBCLwHwJeYvCWt7zlIx/5iGeT
+v+lNb6I8AhOB+0AgtXEfeuGO6uDV0j/5yU++853vvPzyy7///e/THHfEvWIicCcE6Iw3v/nNHqcx
+DybvoRp3Qr1CjiWQ2jiW1OOIZ6JDZPzwhz986aWXfvazn/3mN7/561//+jiaVisicLEEPFznrW99
+qxfGPvfcc+9///tbOrnYK+E+Nzy1cZ9757Wqm8Ho73//+yuvvPKjH/3o5z//uQ2kZIctHa9VeeUb
+gQi8BgS8X+2ZZ5559tlnvfrkve99r29n7NN6DYoqywhsJZDa2Erwgabn5PCYc3vH7Of45S9/+atf
+/crbJn/729/+4Q9/cN/sn/70p7/97W9WXh5o66p2BB4fAX/Y173udW94wxs8NsOGDJsz3va2t73j
+He945zvfOfsz0hmPr9MfU4tSG4+pN09pi8Vdo5jvP//5zyM1/vjHP/7lL3/h/PjHP/6R4DiFaWki
+cNsE/Em9lMAjQT2q641vfKPH91EYr3/96/1D7QH3ue0Cyy8Ct0wgtXHLQB9udrwdNIfv9Xm4banm
+EXiUBDgj14fCcPwom1mjHiWBnlz+KLv1lEYZufJknAKuNBGIQAQicIhAb2U7RKjwCEQgAhGIQAS2
+EUhtbONX6ghEIAIRiEAEDhFIbRwiVHgEIhCBCEQgAtsIpDa28St1BCIQgQhEIAKHCKQ2DhEqPAIR
+iEAEIhCBbQRSG9v4lToCEYhABCIQgUMEUhuHCBUegQhEIAIRiMA2AqmNbfxKHYEIRCACEYjAIQKp
+jUOECo9ABCIQgQhEYBuB1MY2fqWOQAQiEIEIROAQgdTGIUKFRyACEYhABCKwjUBqYxu/UkcgAhGI
+QAQicIhAauMQocIjEIEIRCACEdhGILWxjV+pIxCBCEQgAhE4RCC1cYhQ4RGIQAQiEIEIbCOQ2tjG
+r9QRiEAEIhCBCBwikNo4RKjwCEQgAhGIQAS2EUhtbONX6ghEIAIRiEAEDhFIbRwiVHgEIhCBCEQg
+AtsIpDa28St1BCIQgQhEIAKHCKQ2DhEqPAIRiEAEIhCBbQRSG9v4lToCEYhABCIQgUMEUhuHCBUe
+gQhEIAIRiMA2AqmNbfxKHYEIRCACEYjAIQKpjUOECo9ABCIQgQhEYBuB1MY2fqWOQAQiEIEIROAQ
+gdTGIUKFRyACEYhABCKwjUBqYxu/UkcgAhGIQAQicIhAauMQocIjEIEIRCACEdhGILWxjV+pIxCB
+CEQgAhE4RCC1cYhQ4RGIQAQiEIEIbCOQ2tjGr9QRiEAEIhCBCBwikNo4RKjwCEQgAhGIQAS2EUht
+bONX6ghEIAIRiEAEDhFIbRwiVHgEIhCBCEQgAtsIpDa28St1BCIQgQhEIAKHCKQ2DhEqPAIRiEAE
+IhCBbQRSG9v4lToCEYhABCIQgUMEUhuHCBUegQhEIAIRiMA2AqmNbfxKHYEIRCACEYjAIQKpjUOE
+Co9ABCIQgQhEYBuB1MY2fqWOQAQiEIEIROAQgdTGIUKFRyACEYhABCKwjUBqYxu/UkcgAhGIQAQi
+cIhAauMQocIjEIEIRCACEdhGILWxjV+pIxCBCEQgAhE4RCC1cYhQ4RGIQAQiEIEIbCOQ2tjGr9QR
+iEAEIhCBCBwikNo4RKjwCEQgAhGIQAS2EUhtbONX6ghEIAIRiEAEDhFIbRwiVHgEIhCBCEQgAtsI
+pDa28St1BCIQgQhEIAKHCPzPoQj3IvzVV1/95z//eS+qUiUiEIEIRCACEbghgdTGDYEVPQIRiEAE
+IhCBGxJoJeWGwIoegQhEIAIRiMANCfzXv/71rxsmOUN0KylnKLUiIxCBCEQgAhG4DQIPQ23cRkvL
+IwIRiEAEIhCB8xBoJeU83Cs1AhGIQAQicDkEUhuX09e1NAIRiEAEInAeAqmN83Cv1AhEIAIRiMDl
+EEhtXE5f19IIRCACEYjAeQikNs7DvVIjEIEIRCACl0MgtXE5fV1LIxCBCEQgAuchkNo4D/dKjUAE
+IhCBCFwOgdTG5fR1LY1ABCIQgQich0Bq4zzcKzUCEYhABCJwOQRSG5fT17U0AhGIQAQicB4CqY3z
+cK/UCEQgAhGIwOUQSG1cTl/X0ghEIAIRiMB5CKQ2zsO9UiMQgQhEIAKXQyC1cTl9XUsjEIEIRCAC
+5yGQ2jgP90qNQAQiEIEIXA6B1Mbl9HUtjUAEIhCBCJyHQGrjPNwrNQIRiEAEInA5BFIbl9PXtTQC
+EYhABCJwHgKpjfNwr9QIRCACEYjA5RBIbVxOX9fSCEQgAhGIwHkIpDbOw71SIxCBCEQgApdDILVx
+OX1dSyMQgQhEIALnIZDaOA/3So1ABCIQgQhcDoHUxuX0dS2NQAQiEIEInIdAauM83Cs1AhGIQAQi
+cDkEUhuX09e1NAIRiEAEInAeAqmN83Cv1AhEIAIRiMDlEEhtXE5f19IIRCACEYjAeQikNs7DvVIj
+EIEIRCACl0MgtXE5fV1LIxCBCEQgAuchkNo4D/dKjUAEIhCBCFwOgdTG5fR1LY1ABCIQgQich0Bq
+4zzcKzUCEYhABCJwOQRSG5fT17U0AhGIQAQicB4CqY3zcK/UCEQgAhGIwOUQSG1cTl/X0ghEIAIR
+iMB5CKQ2zsO9UiMQgQhEIAKXQyC1cTl9XUsjEIEIRCAC5yGQ2jgP90qNQAQiEIEIXA6B1Mbl9HUt
+jUAEIhCBCJyHQGrjPNwrNQIRiEAEInA5BFIbl9PXtTQCEYhABCJwHgKpjfNwr9QIRCACEYjA5RBI
+bVxOX9fSCEQgAhGIwHkIpDbOw71SIxCBCEQgApdD4H8B6WpiyslAGggAAAAASUVORK5CYII=
+--0000000000007d62270615614a21--
