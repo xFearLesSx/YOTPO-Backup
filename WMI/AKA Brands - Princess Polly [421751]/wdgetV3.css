@@ -57,7 +57,7 @@
     color: var(--YotpoPrimaryColor);
     text-transform: inherit;
     letter-spacing: inherit;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] [class*="filter"] label {
@@ -952,6 +952,7 @@
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-center-panel .yotpo-review-content {
     margin: 0;
+    font-size: 14px;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"].yotpo-device-mobile .yotpo-review .yotpo-review-center-panel .yotpo-review-content .sr-only {
@@ -1036,6 +1037,7 @@
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-center-panel .yotpo-thumbnail-container {
     margin: 0;
+    order: 8;
     padding: 0;
 }
 
@@ -1050,9 +1052,10 @@
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review .yotpo-review-right-panel .yotpo-date-format {
-    font-size: 12px;
     font-weight: 700;
+    font-size: 12px;
 }
+
 
 [class*="yotpo-display-"][class*="yotpo-device-"].yotpo-device-mobile .yotpo-review .yotpo-review-right-panel {
     order: 2;
@@ -1174,7 +1177,7 @@
 /* Image Modal */
 
 /* New Image Modal */
-[class*="yotpo-display-"][class*="yotpo-device-"] .yotpo-review-media-modal {}
+[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review-media-modal {}
 
 [class*="yotpo-display-"][class*="yotpo-device-"] .yotpo-review-media-modal .yotpo-custom-questions-range-question {}
 
@@ -1223,8 +1226,22 @@
     display: none;
 }
 
-[class*="yotpo-display-"][class*="yotpo-device-"] .yotpo-review-media-modal .yotpo-modal-body-right-side .yotpo-modal-body-right-side-center .yotpo-modal-body-review-content {
+[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review-media-modal .yotpo-modal-body-right-side .yotpo-modal-body-right-side-center .yotpo-modal-body-review-content {
     flex: 0;
+}
+
+[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review-media-modal .yotpo-read-more-text {
+    font-size: 14px;
+    margin-right: 5px;
+    display: inline;
+}
+
+[class*="yotpo-display-"][class*="yotpo-device-"][style] .yotpo-review-media-modal .yotpo-read-more {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    color: var(--YotpoSecondaryColor);
+    text-decoration-thickness: 2px;
+    margin: 0;
 }
 /* New Image Modal */
 
@@ -1376,6 +1393,19 @@
 [class*="yotpo-display-"][class*="yotpo-device-"][style] #newReviewFormModal #modalDescription {
     box-sizing: border-box;
     padding: 0;
+    position: relative;
+}
+
+[class*="yotpo-display-"][class*="yotpo-device-"][style] #newReviewFormModal #modalDescription::before {
+    content: "To earn rewards points, you must submit via the automatic review request email";
+    display: block;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 0;
+    padding: 0 5px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
 }
 
 [class*="yotpo-display-"][class*="yotpo-device-"].yotpo-device-mobile #newReviewFormModal {}
